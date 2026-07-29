@@ -1,0 +1,10 @@
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  misc-header-include-cycle,
+  performance-*,
+  portability-*,
+  -portability-avoid-pragma-once
+WarningsAsErrors: ''
+HeaderFilterRegex: '(^|/)(include|apps|benchmarks|support|tests)/'
