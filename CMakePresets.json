@@ -1,0 +1,130 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON"
+      }
+    },
+    {
+      "name": "core",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "DEPTHWIRE_ENABLE_DPDK": "OFF",
+        "DEPTHWIRE_BUILD_BENCHMARKS": "OFF"
+      }
+    },
+    {
+      "name": "core-release",
+      "displayName": "Core release build",
+      "inherits": "core",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "core-debug",
+      "displayName": "Core debug build",
+      "inherits": "core",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "core-sanitised",
+      "displayName": "Core ASan/UBSan build",
+      "inherits": "core-debug",
+      "cacheVariables": {
+        "DEPTHWIRE_ENABLE_SANITISERS": "ON"
+      }
+    },
+    {
+      "name": "core-fuzz",
+      "displayName": "Core Clang libFuzzer build",
+      "inherits": "core-debug",
+      "cacheVariables": {
+        "DEPTHWIRE_BUILD_FUZZERS": "ON"
+      }
+    },
+    {
+      "name": "dpdk-release",
+      "displayName": "DPDK release build",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "DEPTHWIRE_ENABLE_DPDK": "ON",
+        "DEPTHWIRE_BUILD_BENCHMARKS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "core-release",
+      "configurePreset": "core-release"
+    },
+    {
+      "name": "core-debug",
+      "configurePreset": "core-debug"
+    },
+    {
+      "name": "core-sanitised",
+      "configurePreset": "core-sanitised"
+    },
+    {
+      "name": "core-fuzz",
+      "configurePreset": "core-fuzz"
+    },
+    {
+      "name": "dpdk-release",
+      "configurePreset": "dpdk-release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "core-release",
+      "configurePreset": "core-release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "core-debug",
+      "configurePreset": "core-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "core-sanitised",
+      "configurePreset": "core-sanitised",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "core-fuzz",
+      "configurePreset": "core-fuzz",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "dpdk-release",
+      "configurePreset": "dpdk-release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
