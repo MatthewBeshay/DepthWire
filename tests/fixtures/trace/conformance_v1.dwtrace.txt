@@ -1,0 +1,45 @@
+depthwire-trace-text v1
+wire-version 1
+instrument 77
+max-delta-ns 1000000
+max-quantity 1001
+record delta=1000 seq=4294967280 ts=4294967280000 side=sell action=modify level=0 price=100100 qty=10
+record delta=1000 seq=4294967281 ts=4294967281000 side=sell action=modify level=1 price=100101 qty=10
+record delta=1000 seq=4294967282 ts=4294967282000 side=sell action=modify level=2 price=100102 qty=10
+record delta=1000 seq=4294967283 ts=4294967283000 side=sell action=modify level=3 price=100103 qty=10
+record delta=1000 seq=4294967284 ts=4294967284000 side=sell action=modify level=4 price=100104 qty=10
+record delta=1000 seq=4294967285 ts=4294967285000 side=buy action=modify level=0 price=100000 qty=10
+record delta=1000 seq=4294967286 ts=4294967286000 side=buy action=modify level=1 price=99999 qty=10
+record delta=1000 seq=4294967287 ts=4294967287000 side=buy action=modify level=2 price=99998 qty=10
+record delta=1000 seq=4294967288 ts=4294967288000 side=buy action=modify level=3 price=99997 qty=10
+record delta=1000 seq=4294967289 ts=4294967289000 side=buy action=modify level=4 price=99996 qty=10
+record delta=1000 seq=4294967290 ts=4294967290000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=4294967291 ts=4294967291000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=4294967292 ts=4294967292000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=4294967293 ts=4294967293000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=4294967294 ts=4294967294000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=4294967295 ts=4294967295000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=0 ts=0 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=1 ts=1000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=2 ts=2000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=3 ts=3000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=4 ts=4000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=5 ts=5000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=0 seq=5 ts=5000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=0 seq=4294967290 ts=4294967290000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000000 seq=7 ts=7000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=6 ts=6000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=7 ts=7000 side=buy action=modify level=0 price=100000 qty=1001
+record delta=1000 seq=8 ts=8000 side=buy action=modify level=9 price=100000 qty=10
+record delta=1000 seq=8 ts=8000 side=buy action=modify level=0 price=100000 qty=10
+record delta=1000 seq=9 ts=9000 side=sell action=modify level=0 price=100100 qty=10
+record delta=1000 seq=10 ts=10000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=11 ts=11000 side=buy action=modify level=0 price=100000 qty=10
+record delta=1000 seq=12 ts=12000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=13 ts=13000 side=buy action=modify level=0 price=100000 qty=10
+record delta=1000 seq=14 ts=14000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=15 ts=15000 side=buy action=modify level=0 price=100000 qty=10
+record delta=1000 seq=16 ts=16000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=17 ts=17000 side=buy action=modify level=0 price=100000 qty=10
+record delta=1000 seq=18 ts=18000 side=buy action=modify level=0 price=100000 qty=1000
+record delta=1000 seq=19 ts=19000 side=buy action=modify level=0 price=100000 qty=10
