@@ -1,0 +1,25 @@
+# Exclude everything
+/*
+
+# Except for default project files
+!/.github/
+!/apps/
+!/benchmarks/
+!/cmake/
+!/docs/
+!/include/
+!/results/
+!/scripts/
+!/support/
+!/tests/
+!/.clang-format
+!/.clang-tidy
+!/.gitignore
+!/CMakeLists.txt
+!/CMakePresets.json
+!/LICENSE
+!/README.md
+
+# Editor state anywhere in the tree
+*.swp
+*.swo
