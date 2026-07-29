@@ -1,0 +1,57 @@
+command: ./build/dpdk-release/apps/depthwire-replay run tests/fixtures/trace/conformance_v1.dwtrace
+============================================================
+DepthWire - Trace Replay
+============================================================
+DepthWire version:         1.0.0
+Source revision:           2f6e29a8f513e35e037723da15a9261936ff32bb
+Mode:                      conformance
+Trace file:                tests/fixtures/trace/conformance_v1.dwtrace
+Trace records:             40
+Trace duration:            1037000 ns
+Instrument:                77
+Declared max delta:        1000000 ns
+Declared max quantity:     1001
+Observed delta range:      0..1000000 ns
+trace-records-sha256: 076e470284746fb9f62a8617e54e4896d7193e175c6017c7e591b0bb528a2e90
+trace-sha256: 86b9957e60d39f015d8c133b19231f417e0a086a08b855504d36efa92649b46e
+Sequence policy:           require_contiguous
+Imbalance threshold:       6000 bps
+Order quantity:            10
+Max outstanding orders:    128
+First output sequence:     1
+
+Determinism claim:
+  Same accepted input sequence and configuration produce the same
+  digest across independent runs. Conformance replay
+  processes every record without pacing or transport.
+
+Counters (hashed into digest):
+counter offered:               40
+counter accepted:              40
+counter dropped:               0
+counter processed:             40
+counter ordered:               19
+counter no-order:              17
+counter order-encoded:         19
+counter decode-rejected:       0
+counter adapter-rejected:      0
+counter status-other:          0
+counter engine-duplicate:      1
+counter engine-gap:            1
+counter engine-stale:          1
+counter engine-invalid:        1
+counter engine-other:          0
+counter backlog-final:         0
+Counters (reported, not hashed):
+counter late:                  0
+counter queued-max:            0
+counter orders-tx-dropped:     0
+counter recovery-duration-ns:  0
+
+digest-sha256: 8ee63c8ce91d646ca7b93d021ef452587abcd710ba82a2ee04fe01a3ad9c5952
+
+Classification:
+  Deterministic transport-neutral conformance replay. This is not
+  offered-load, latency, throughput, or overload-recovery evidence.
+
+Status:                    OK

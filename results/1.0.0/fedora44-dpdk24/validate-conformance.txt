@@ -1,0 +1,18 @@
+command: ./build/dpdk-release/apps/depthwire-replay validate tests/fixtures/trace/conformance_v1.dwtrace
+============================================================
+DepthWire - Trace Validation
+============================================================
+DepthWire version:         1.0.0
+Source revision:           2f6e29a8f513e35e037723da15a9261936ff32bb
+Mode:                      validate
+Trace file:                tests/fixtures/trace/conformance_v1.dwtrace
+Trace records:             40
+Trace duration:            1037000 ns
+Instrument:                77
+Declared max delta:        1000000 ns
+Declared max quantity:     1001
+Observed delta range:      0..1000000 ns
+trace-records-sha256: 076e470284746fb9f62a8617e54e4896d7193e175c6017c7e591b0bb528a2e90
+trace-sha256: 86b9957e60d39f015d8c133b19231f417e0a086a08b855504d36efa92649b46e
+
+Status:                    OK

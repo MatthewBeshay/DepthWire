@@ -201,12 +201,17 @@ result is published yet.
 
 ## Performance results
 
-No performance numbers are published yet, deliberately: a result is
-publishable only with full provenance (exact clean revision, environment,
-warm-up policy, timer overhead, every run, raw-output checksums; see the
-[methodology](docs/benchmarks/methodology.md)). The evidence bundle is
-collected from the tagged release revision with
-`scripts/replay/run-evidence.sh` and published under `results/`.
+The v1.0.0 replay evidence bundle lives under
+[results/1.0.0/fedora44-dpdk24](results/1.0.0/fedora44-dpdk24): a
+nine-point declared rate sweep (three fresh-process runs per point, every
+point published), the reproduced conformance digest, and three
+overload-recovery runs. On the collection host the saturation knee sits
+at 2.0M events/s offered (lossless in every recorded run) and recovery
+from a full ring takes roughly half a millisecond. Every result carries
+full provenance (exact clean revision, environment, warm-up policy,
+timer overhead, every run, raw-output checksums; see the
+[methodology](docs/benchmarks/methodology.md)) and was collected from the
+tagged release revision with `scripts/replay/run-evidence.sh`.
 
 ## AF_PACKET path
 

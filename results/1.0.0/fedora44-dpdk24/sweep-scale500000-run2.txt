@@ -1,0 +1,128 @@
+command: ./build/dpdk-release/apps/depthwire-replay run tests/fixtures/trace/load_uniform_100k_v1.dwtrace --mode=paced --scale-ppm=500000 -- -l 0 --no-pci --no-huge --no-shconf --no-telemetry --mbuf-pool-ops-name=ring_mp_mc --file-prefix=dw_ev_s500000_r2
+EAL: Detected CPU lcores: 20
+EAL: Detected NUMA nodes: 1
+EAL: Static memory layout is selected, amount of reserved memory can be adjusted with -m or --socket-mem
+EAL: Detected shared linkage of DPDK
+EAL: Selected IOVA mode 'VA'
+============================================================
+DepthWire - Trace Replay (paced)
+============================================================
+DepthWire version:         1.0.0
+Source revision:           2f6e29a8f513e35e037723da15a9261936ff32bb
+Mode:                      paced
+DPDK version:              DPDK 24.11.4
+Main lcore:                0
+TSC frequency:             1996200000 Hz
+Pacing clock:              std::chrono::steady_clock
+Burst size:                32
+Lateness bound:            50000 ns
+Sequence policy:           accept_any
+segment 0: first=0 scale-ppm=500000 offered=100000 accepted=100000 dropped=0 late=0 queued-max=103 backlog-at-end=1
+Trace file:                tests/fixtures/trace/load_uniform_100k_v1.dwtrace
+Trace records:             100000
+Trace duration:            100000000 ns
+Instrument:                77
+Declared max delta:        1000000 ns
+Declared max quantity:     1001
+Observed delta range:      1000..1000 ns
+trace-records-sha256: 83ab06b0cff087585556bf60eaf3c43102dd23cbe815d91a4f5d21e1034e8875
+trace-sha256: 066dfa25a564118a272f0aa902b203224bdc854cb28c3ff6b9ac735fa518d544
+Schedule end:              50000000 ns
+Recovery reference:        50000000 ns (end of schedule)
+Run duration:              50000937 ns
+
+Timing definitions:
+  Pacing: events become due on the steady_clock schedule regardless
+  of consumer progress; the clock is re-read for every injected
+  burst of at most the configured burst size.
+  Service: per-packet processing start (after the receive burst
+  returns) -> that order's TX accepted (TSC). Waiting inside a
+  received burst is included in queue-plus-service, not service.
+  Queue+service: injection TX accepted -> order TX accepted (TSC).
+  Lateness: burst issue time minus the event's scheduled due time.
+  Recovery: recovery reference -> first observation of zero total
+  backlog (market plus orders in flight).
+  Timer overhead is reported separately and not subtracted.
+
+Timer read overhead:
+  Samples:              100000
+  Mean:                 25.928 ns
+  p50:                  20.038 ns
+  p95:                  60.114 ns
+  p99:                  60.114 ns
+  p99.9:                60.114 ns
+  Maximum:              1192.265 ns
+Per-packet service latency:
+  Samples:              99990
+  Mean:                 203.931 ns
+  p50:                  200.381 ns
+  p95:                  390.742 ns
+  p99:                  671.275 ns
+  p99.9:                1222.322 ns
+  Maximum:              48562.268 ns
+Queue-plus-service latency:
+  Samples:              99990
+  Mean:                 572.054 ns
+  p50:                  270.514 ns
+  p95:                  831.580 ns
+  p99:                  7945.096 ns
+  p99.9:                30798.517 ns
+  Maximum:              48622.383 ns
+Injection lateness:
+  Samples:              100000
+  Mean:                 414.533 ns
+  p50:                  220.000 ns
+  p95:                  776.000 ns
+  p99:                  4890.000 ns
+  p99.9:                20959.000 ns
+  Maximum:              49098.000 ns
+
+Achieved throughput:       1999962.521 events/s (processed over run duration)
+Orders TX accepted:        99990
+Orders drained:            99990
+
+Counters (hashed into digest):
+counter offered:               100000
+counter accepted:              100000
+counter dropped:               0
+counter processed:             100000
+counter ordered:               99990
+counter no-order:              10
+counter order-encoded:         99990
+counter decode-rejected:       0
+counter adapter-rejected:      0
+counter status-other:          0
+counter engine-duplicate:      0
+counter engine-gap:            0
+counter engine-stale:          0
+counter engine-invalid:        0
+counter engine-other:          0
+counter backlog-final:         0
+Counters (reported, not hashed):
+counter late:                  0
+counter queued-max:            103
+counter orders-tx-dropped:     0
+counter recovery-duration-ns:  256
+
+digest-sha256: 8211716b9a077a3762b51325d078ad507eb8a015f7843a67dbd42745f21f17cb
+
+Virtual port counters:
+  Generator TX:            100000
+  Generator RX:            99990
+  Engine RX:               100000
+  Engine TX:               99990
+
+Invariants:
+  counters conserved:      yes
+  orders reconciled:       yes
+  samples reconciled:      yes
+  zero final backlog:      yes
+  mempool restored:        yes
+
+Classification:
+  Replay-paced offered load over the virtual Ring PMD on one lcore.
+  Loss under overload is visible in the counters, not excluded.
+  This is not line-rate capacity, physical-NIC latency, wire
+  latency, or exchange round-trip evidence.
+
+Status:                    OK

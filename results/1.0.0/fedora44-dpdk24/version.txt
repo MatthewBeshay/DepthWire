@@ -1,0 +1,2 @@
+command: ./build/dpdk-release/apps/depthwire-replay --version
+depthwire-replay 1.0.0 (revision 2f6e29a8f513e35e037723da15a9261936ff32bb)

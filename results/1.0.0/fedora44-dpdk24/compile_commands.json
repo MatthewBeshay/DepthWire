@@ -1,0 +1,368 @@
+[
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_contracts_contracts_hpp.dir/generated/header-checks/depthwire_contracts_contracts_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_contracts_contracts_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_contracts_contracts_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_contracts_contracts_hpp.dir/generated/header-checks/depthwire_contracts_contracts_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_digest_sha256_hpp.dir/generated/header-checks/depthwire_digest_sha256_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_digest_sha256_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_digest_sha256_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_digest_sha256_hpp.dir/generated/header-checks/depthwire_digest_sha256_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_market_types_hpp.dir/generated/header-checks/depthwire_market_types_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_market_types_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_market_types_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_market_types_hpp.dir/generated/header-checks/depthwire_market_types_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_book_fixed_l2_book_hpp.dir/generated/header-checks/depthwire_book_fixed_l2_book_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_book_fixed_l2_book_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_book_fixed_l2_book_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_book_fixed_l2_book_hpp.dir/generated/header-checks/depthwire_book_fixed_l2_book_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_strategy_imbalance_strategy_hpp.dir/generated/header-checks/depthwire_strategy_imbalance_strategy_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_strategy_imbalance_strategy_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_strategy_imbalance_strategy_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_strategy_imbalance_strategy_hpp.dir/generated/header-checks/depthwire_strategy_imbalance_strategy_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_order_order_request_hpp.dir/generated/header-checks/depthwire_order_order_request_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_order_order_request_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_order_order_request_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_order_order_request_hpp.dir/generated/header-checks/depthwire_order_order_request_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_order_preallocated_outbox_hpp.dir/generated/header-checks/depthwire_order_preallocated_outbox_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_order_preallocated_outbox_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_order_preallocated_outbox_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_order_preallocated_outbox_hpp.dir/generated/header-checks/depthwire_order_preallocated_outbox_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_risk_risk_guard_hpp.dir/generated/header-checks/depthwire_risk_risk_guard_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_risk_risk_guard_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_risk_risk_guard_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_risk_risk_guard_hpp.dir/generated/header-checks/depthwire_risk_risk_guard_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_engine_trading_engine_hpp.dir/generated/header-checks/depthwire_engine_trading_engine_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_engine_trading_engine_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_engine_trading_engine_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_engine_trading_engine_hpp.dir/generated/header-checks/depthwire_engine_trading_engine_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_wire_endian_hpp.dir/generated/header-checks/depthwire_wire_endian_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_endian_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_endian_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_wire_endian_hpp.dir/generated/header-checks/depthwire_wire_endian_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_wire_ethernet_frame_hpp.dir/generated/header-checks/depthwire_wire_ethernet_frame_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_ethernet_frame_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_ethernet_frame_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_wire_ethernet_frame_hpp.dir/generated/header-checks/depthwire_wire_ethernet_frame_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_wire_market_data_packet_hpp.dir/generated/header-checks/depthwire_wire_market_data_packet_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_market_data_packet_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_market_data_packet_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_wire_market_data_packet_hpp.dir/generated/header-checks/depthwire_wire_market_data_packet_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_wire_order_packet_hpp.dir/generated/header-checks/depthwire_wire_order_packet_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_order_packet_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_order_packet_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_wire_order_packet_hpp.dir/generated/header-checks/depthwire_wire_order_packet_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_wire_wire_constants_hpp.dir/generated/header-checks/depthwire_wire_wire_constants_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_wire_constants_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_wire_constants_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_wire_wire_constants_hpp.dir/generated/header-checks/depthwire_wire_wire_constants_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_wire_wire_header_hpp.dir/generated/header-checks/depthwire_wire_wire_header_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_wire_header_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_wire_wire_header_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_wire_wire_header_hpp.dir/generated/header-checks/depthwire_wire_wire_header_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_trace_trace_codec_hpp.dir/generated/header-checks/depthwire_trace_trace_codec_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_codec_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_codec_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_trace_trace_codec_hpp.dir/generated/header-checks/depthwire_trace_trace_codec_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_trace_trace_format_hpp.dir/generated/header-checks/depthwire_trace_trace_format_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_format_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_format_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_trace_trace_format_hpp.dir/generated/header-checks/depthwire_trace_trace_format_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_trace_trace_text_hpp.dir/generated/header-checks/depthwire_trace_trace_text_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_text_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_text_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_trace_trace_text_hpp.dir/generated/header-checks/depthwire_trace_trace_text_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_trace_trace_validator_hpp.dir/generated/header-checks/depthwire_trace_trace_validator_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_validator_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_trace_trace_validator_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_trace_trace_validator_hpp.dir/generated/header-checks/depthwire_trace_trace_validator_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_pipeline_engine_wire_adapter_hpp.dir/generated/header-checks/depthwire_pipeline_engine_wire_adapter_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_pipeline_engine_wire_adapter_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_pipeline_engine_wire_adapter_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_pipeline_engine_wire_adapter_hpp.dir/generated/header-checks/depthwire_pipeline_engine_wire_adapter_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_pipeline_packet_processor_hpp.dir/generated/header-checks/depthwire_pipeline_packet_processor_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_pipeline_packet_processor_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_pipeline_packet_processor_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_pipeline_packet_processor_hpp.dir/generated/header-checks/depthwire_pipeline_packet_processor_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_replay_conformance_runner_hpp.dir/generated/header-checks/depthwire_replay_conformance_runner_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_conformance_runner_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_conformance_runner_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_replay_conformance_runner_hpp.dir/generated/header-checks/depthwire_replay_conformance_runner_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_replay_event_journal_hpp.dir/generated/header-checks/depthwire_replay_event_journal_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_event_journal_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_event_journal_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_replay_event_journal_hpp.dir/generated/header-checks/depthwire_replay_event_journal_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_replay_pacer_hpp.dir/generated/header-checks/depthwire_replay_pacer_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_pacer_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_pacer_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_replay_pacer_hpp.dir/generated/header-checks/depthwire_replay_pacer_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_replay_replay_counters_hpp.dir/generated/header-checks/depthwire_replay_replay_counters_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_replay_counters_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_replay_counters_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_replay_replay_counters_hpp.dir/generated/header-checks/depthwire_replay_replay_counters_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/depthwire_header_check_depthwire_replay_run_digest_hpp.dir/generated/header-checks/depthwire_replay_run_digest_hpp.cpp.o -c /home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_run_digest_hpp.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/generated/header-checks/depthwire_replay_run_digest_hpp.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/CMakeFiles/depthwire_header_check_depthwire_replay_run_digest_hpp.dir/generated/header-checks/depthwire_replay_run_digest_hpp.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o apps/CMakeFiles/depthwire.dir/depthwire-engine/main.cpp.o -c /home/matthew/dev/cpp/DepthWire/apps/depthwire-engine/main.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/apps/depthwire-engine/main.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/apps/CMakeFiles/depthwire.dir/depthwire-engine/main.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_REPLAY_ENABLE_DPDK=1 -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/benchmarks -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o apps/CMakeFiles/depthwire-replay.dir/depthwire-replay/main.cpp.o -c /home/matthew/dev/cpp/DepthWire/apps/depthwire-replay/main.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/apps/depthwire-replay/main.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/apps/CMakeFiles/depthwire-replay.dir/depthwire-replay/main.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_REPLAY_ENABLE_DPDK=1 -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/benchmarks -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o apps/CMakeFiles/depthwire-replay.dir/depthwire-replay/paced_run.cpp.o -c /home/matthew/dev/cpp/DepthWire/apps/depthwire-replay/paced_run.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/apps/depthwire-replay/paced_run.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/apps/CMakeFiles/depthwire-replay.dir/depthwire-replay/paced_run.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/benchmarks -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o benchmarks/CMakeFiles/depthwire_ring_latency.dir/ring/latency.cpp.o -c /home/matthew/dev/cpp/DepthWire/benchmarks/ring/latency.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/benchmarks/ring/latency.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/benchmarks/CMakeFiles/depthwire_ring_latency.dir/ring/latency.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/benchmarks -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o benchmarks/CMakeFiles/depthwire_ring_load.dir/ring/load.cpp.o -c /home/matthew/dev/cpp/DepthWire/benchmarks/ring/load.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/benchmarks/ring/load.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/benchmarks/CMakeFiles/depthwire_ring_load.dir/ring/load.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/benchmarks -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o benchmarks/CMakeFiles/depthwire_ring_regimes.dir/ring/regimes.cpp.o -c /home/matthew/dev/cpp/DepthWire/benchmarks/ring/regimes.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/benchmarks/ring/regimes.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/benchmarks/CMakeFiles/depthwire_ring_regimes.dir/ring/regimes.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -o benchmarks/CMakeFiles/depthwire_afpacket_benchmark_generator.dir/af_packet/generator.cpp.o -c /home/matthew/dev/cpp/DepthWire/benchmarks/af_packet/generator.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/benchmarks/af_packet/generator.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/benchmarks/CMakeFiles/depthwire_afpacket_benchmark_generator.dir/af_packet/generator.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -DDEPTHWIRE_PROJECT_VERSION=\\\"1.0.0\\\" -DDEPTHWIRE_SOURCE_REVISION=\\\"2f6e29a8f513e35e037723da15a9261936ff32bb\\\" -I/home/matthew/dev/cpp/DepthWire/benchmarks -I/home/matthew/dev/cpp/DepthWire/include -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o benchmarks/CMakeFiles/depthwire_afpacket_latency.dir/af_packet/latency.cpp.o -c /home/matthew/dev/cpp/DepthWire/benchmarks/af_packet/latency.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/benchmarks/af_packet/latency.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/benchmarks/CMakeFiles/depthwire_afpacket_latency.dir/af_packet/latency.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_wire_market_data.dir/unit/wire/market_data_packet.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/market_data_packet.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/market_data_packet.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_wire_market_data.dir/unit/wire/market_data_packet.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_wire_order.dir/unit/wire/order_packet.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/order_packet.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/order_packet.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_wire_order.dir/unit/wire/order_packet.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_wire_invalid_packet.dir/unit/wire/invalid_packet.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/invalid_packet.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/invalid_packet.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_wire_invalid_packet.dir/unit/wire/invalid_packet.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_ethernet_market_frame.dir/unit/wire/ethernet_market_frame.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/ethernet_market_frame.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/ethernet_market_frame.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_ethernet_market_frame.dir/unit/wire/ethernet_market_frame.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_ethernet_order_frame.dir/unit/wire/ethernet_order_frame.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/ethernet_order_frame.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/ethernet_order_frame.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_ethernet_order_frame.dir/unit/wire/ethernet_order_frame.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_engine_wire_adapter.dir/unit/pipeline/engine_wire_adapter.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/pipeline/engine_wire_adapter.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/pipeline/engine_wire_adapter.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_engine_wire_adapter.dir/unit/pipeline/engine_wire_adapter.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_engine_scenarios.dir/unit/engine/scenarios.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/engine/scenarios.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/engine/scenarios.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_engine_scenarios.dir/unit/engine/scenarios.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_risk_guard.dir/unit/risk/risk_guard.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/risk/risk_guard.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/risk/risk_guard.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_risk_guard.dir/unit/risk/risk_guard.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_fixed_l2_book.dir/unit/book/fixed_l2_book.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/book/fixed_l2_book.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/book/fixed_l2_book.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_fixed_l2_book.dir/unit/book/fixed_l2_book.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_preallocated_outbox.dir/unit/order/preallocated_outbox.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/order/preallocated_outbox.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/order/preallocated_outbox.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_preallocated_outbox.dir/unit/order/preallocated_outbox.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_engine_sequence_policy.dir/unit/engine/sequence_policy.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/engine/sequence_policy.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/engine/sequence_policy.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_engine_sequence_policy.dir/unit/engine/sequence_policy.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_wire_golden_vectors.dir/unit/wire/golden_vectors.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/golden_vectors.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/golden_vectors.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_wire_golden_vectors.dir/unit/wire/golden_vectors.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_wire_truncation.dir/unit/wire/truncation.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/wire/truncation.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/wire/truncation.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_wire_truncation.dir/unit/wire/truncation.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_packet_processor.dir/unit/pipeline/packet_processor.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/pipeline/packet_processor.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/pipeline/packet_processor.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_packet_processor.dir/unit/pipeline/packet_processor.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_sha256.dir/unit/digest/sha256.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/digest/sha256.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/digest/sha256.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_sha256.dir/unit/digest/sha256.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_trace_golden_vectors.dir/unit/trace/golden_vectors.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/trace/golden_vectors.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/trace/golden_vectors.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_trace_golden_vectors.dir/unit/trace/golden_vectors.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -fno-ipa-modref -o tests/CMakeFiles/depthwire_test_trace_validator.dir/unit/trace/validator.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/trace/validator.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/trace/validator.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_trace_validator.dir/unit/trace/validator.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_trace_text_round_trip.dir/unit/trace/text_round_trip.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/trace/text_round_trip.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/trace/text_round_trip.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_trace_text_round_trip.dir/unit/trace/text_round_trip.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/tests -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_trace_fixtures.dir/unit/trace/fixtures.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/trace/fixtures.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/trace/fixtures.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_trace_fixtures.dir/unit/trace/fixtures.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_run_digest.dir/unit/replay/run_digest.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/replay/run_digest.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/replay/run_digest.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_run_digest.dir/unit/replay/run_digest.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_pacer.dir/unit/replay/pacer.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/replay/pacer.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/replay/pacer.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_pacer.dir/unit/replay/pacer.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_replay_counters.dir/unit/replay/counters.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/replay/counters.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/replay/counters.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_replay_counters.dir/unit/replay/counters.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -UNDEBUG -o tests/CMakeFiles/depthwire_test_conformance_fixture.dir/unit/replay/conformance_fixture.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/unit/replay/conformance_fixture.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/unit/replay/conformance_fixture.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_conformance_fixture.dir/unit/replay/conformance_fixture.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -o tests/CMakeFiles/depthwire_afpacket_test_peer.dir/integration/dpdk/afpacket_peer.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/afpacket_peer.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/afpacket_peer.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_afpacket_test_peer.dir/integration/dpdk/afpacket_peer.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o tests/CMakeFiles/depthwire_test_dpdk_scenarios.dir/integration/dpdk/ring_scenarios.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/ring_scenarios.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/ring_scenarios.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_dpdk_scenarios.dir/integration/dpdk/ring_scenarios.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o tests/CMakeFiles/depthwire_test_dpdk_ring_transport.dir/integration/dpdk/ring_transport.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/ring_transport.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/ring_transport.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_dpdk_ring_transport.dir/integration/dpdk/ring_transport.cpp.o"
+},
+{
+  "directory": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release",
+  "command": "/usr/lib64/ccache/c++ -I/home/matthew/dev/cpp/DepthWire/include -I/home/matthew/dev/cpp/DepthWire/support -isystem /usr/include/dpdk -O3 -DNDEBUG -std=c++26 -Wall -Wextra -Wpedantic -Werror -O3 -include rte_config.h -march=corei7 -mrtm -DWITH_GZFILEOP -o tests/CMakeFiles/depthwire_test_replay_recovery.dir/integration/dpdk/replay_recovery.cpp.o -c /home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/replay_recovery.cpp",
+  "file": "/home/matthew/dev/cpp/DepthWire/tests/integration/dpdk/replay_recovery.cpp",
+  "output": "/home/matthew/dev/cpp/DepthWire/build/dpdk-release/tests/CMakeFiles/depthwire_test_replay_recovery.dir/integration/dpdk/replay_recovery.cpp.o"
+}
+]
