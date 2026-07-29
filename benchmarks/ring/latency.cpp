@@ -1,0 +1,507 @@
+#include <cstddef>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <span>
+
+#include <rte_cycles.h>
+#include <rte_eal.h>
+#include <rte_errno.h>
+#include <rte_lcore.h>
+#include <rte_mbuf.h>
+#include <rte_version.h>
+
+#include "depthwire/engine/trading_engine.hpp"
+#include "depthwire/pipeline/engine_wire_adapter.hpp"
+#include "depthwire/wire/ethernet_frame.hpp"
+#include "dpdk/latency_virtual_link.hpp"
+#include "support/dpdk_latency_recorder.hpp"
+
+namespace {
+
+inline constexpr std::size_t kTimerOverheadSamples = 100'000;
+inline constexpr std::size_t kWarmupEvents = 100'000;
+inline constexpr std::size_t kMeasuredEvents = 1'000'000;
+
+#ifndef DEPTHWIRE_PROJECT_VERSION
+#	define DEPTHWIRE_PROJECT_VERSION "unknown"
+#endif
+
+#ifndef DEPTHWIRE_SOURCE_REVISION
+#	define DEPTHWIRE_SOURCE_REVISION "unknown"
+#endif
+
+struct BenchmarkCounters {
+	std::uint64_t packets_received{};
+	std::uint64_t orders_emitted{};
+	std::uint64_t failures{};
+};
+
+depthwire::wire::EthernetEnvelope make_market_envelope() noexcept
+{
+	depthwire::wire::EthernetEnvelope envelope{};
+
+	envelope.destination = {
+		std::byte{0x02}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x20},
+	};
+
+	envelope.source = {
+		std::byte{0x02}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x10},
+	};
+
+	return envelope;
+}
+
+depthwire::wire::EthernetEnvelope make_order_envelope() noexcept
+{
+	depthwire::wire::EthernetEnvelope envelope{};
+
+	envelope.destination = {
+		std::byte{0x02}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x10},
+	};
+
+	envelope.source = {
+		std::byte{0x02}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x00}, std::byte{0x20},
+	};
+
+	return envelope;
+}
+
+depthwire::wire::MarketDataMessage make_message(const std::uint32_t sequence, const depthwire::wire::Side side,
+						const std::uint16_t level, const std::int64_t price_ticks,
+						const std::uint32_t quantity) noexcept
+{
+	depthwire::wire::MarketDataMessage message{};
+
+	message.sequence_number = sequence;
+	message.wire_flags = 0;
+	message.exchange_timestamp_ns = static_cast<std::uint64_t>(sequence) * 1000ULL;
+	message.instrument_id = 77;
+	message.price_ticks = price_ticks;
+	message.quantity = quantity;
+	message.side = side;
+	message.action = depthwire::wire::UpdateAction::modify;
+	message.level = level;
+	message.source_flags = 0;
+
+	return message;
+}
+
+bool seed_balanced_book(depthwire::dpdk::LatencyVirtualLink &link, depthwire::TradingEngine<64> &engine,
+			std::uint32_t &sequence) noexcept
+{
+	const auto envelope = make_market_envelope();
+
+	for (std::uint16_t level = 0; level < 5; ++level) {
+		const auto wire_message =
+			make_message(sequence++, depthwire::wire::Side::sell, level, 100100 + level, 10);
+
+		depthwire::wire::EthernetFrame frame{};
+
+		if (!depthwire::wire::encode_market_data_frame(envelope, wire_message, frame) ||
+		    !link.inject_market_frame(frame)) {
+			return false;
+		}
+
+		rte_mbuf *packet{};
+
+		if (!link.receive_engine_packet(packet)) {
+			return false;
+		}
+
+		const auto *data = rte_pktmbuf_mtod(packet, const std::byte *);
+
+		const auto bytes =
+			std::span<const std::byte>(data, static_cast<std::size_t>(rte_pktmbuf_data_len(packet)));
+
+		const auto decode_result = depthwire::wire::decode_market_data_frame(bytes);
+
+		rte_pktmbuf_free(packet);
+
+		if (!decode_result) {
+			return false;
+		}
+
+		const auto &decoded_message = decode_result->message;
+
+		const auto update_result = depthwire::pipeline::EngineWireAdapter::to_market_update(decoded_message);
+
+		if (!update_result) {
+			return false;
+		}
+
+		const auto &update = *update_result;
+
+		if (engine.on_market_update(update).status != depthwire::EngineStatus::no_order) {
+			return false;
+		}
+	}
+
+	for (std::uint16_t level = 0; level < 5; ++level) {
+		const auto wire_message =
+			make_message(sequence++, depthwire::wire::Side::buy, level, 100000 - level, 10);
+
+		depthwire::wire::EthernetFrame frame{};
+
+		if (!depthwire::wire::encode_market_data_frame(envelope, wire_message, frame) ||
+		    !link.inject_market_frame(frame)) {
+			return false;
+		}
+
+		rte_mbuf *packet{};
+
+		if (!link.receive_engine_packet(packet)) {
+			return false;
+		}
+
+		const auto *data = rte_pktmbuf_mtod(packet, const std::byte *);
+
+		const auto bytes =
+			std::span<const std::byte>(data, static_cast<std::size_t>(rte_pktmbuf_data_len(packet)));
+
+		const auto decode_result = depthwire::wire::decode_market_data_frame(bytes);
+
+		rte_pktmbuf_free(packet);
+
+		if (!decode_result) {
+			return false;
+		}
+
+		const auto &decoded_message = decode_result->message;
+
+		const auto update_result = depthwire::pipeline::EngineWireAdapter::to_market_update(decoded_message);
+
+		if (!update_result) {
+			return false;
+		}
+
+		const auto &update = *update_result;
+
+		if (engine.on_market_update(update).status != depthwire::EngineStatus::no_order) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool run_order_iteration(depthwire::dpdk::LatencyVirtualLink &link, depthwire::TradingEngine<64> &engine,
+			 const depthwire::wire::EthernetEnvelope &market_envelope,
+			 const depthwire::wire::EthernetEnvelope &order_envelope, std::uint32_t &incoming_sequence,
+			 std::uint32_t &outbound_sequence, std::uint64_t &measured_cycles, const bool validate_outbound,
+			 BenchmarkCounters &counters) noexcept
+{
+	const std::uint32_t current_sequence = incoming_sequence++;
+	const std::uint32_t trigger_quantity = 1000U + (current_sequence & 1U);
+
+	const auto market_message =
+		make_message(current_sequence, depthwire::wire::Side::buy, 0, 100000, trigger_quantity);
+
+	depthwire::wire::EthernetFrame incoming_frame{};
+
+	if (!depthwire::wire::encode_market_data_frame(market_envelope, market_message, incoming_frame) ||
+	    !link.inject_market_frame(incoming_frame)) {
+		++counters.failures;
+		return false;
+	}
+
+	rte_mbuf *rx_packet{};
+
+	if (!link.receive_engine_packet(rx_packet)) {
+		++counters.failures;
+		return false;
+	}
+
+	const std::uint64_t start_cycles = rte_rdtsc_precise();
+
+	const auto *input_data = rte_pktmbuf_mtod(rx_packet, const std::byte *);
+
+	const auto input_bytes =
+		std::span<const std::byte>(input_data, static_cast<std::size_t>(rte_pktmbuf_data_len(rx_packet)));
+
+	const auto decode_result = depthwire::wire::decode_market_data_frame(input_bytes);
+
+	if (!decode_result) {
+		rte_pktmbuf_free(rx_packet);
+		++counters.failures;
+		return false;
+	}
+
+	const auto &decoded_message = decode_result->message;
+
+	rte_pktmbuf_free(rx_packet);
+	++counters.packets_received;
+
+	const auto update_result = depthwire::pipeline::EngineWireAdapter::to_market_update(decoded_message);
+
+	if (!update_result) {
+		++counters.failures;
+		return false;
+	}
+
+	const auto &update = *update_result;
+
+	const depthwire::EngineResult result = engine.on_market_update(update);
+
+	if (result.status != depthwire::EngineStatus::order_emitted || result.signal != depthwire::Signal::buy) {
+		++counters.failures;
+		return false;
+	}
+
+	depthwire::OrderRequest order{};
+
+	if (!engine.pop_order(order)) {
+		++counters.failures;
+		return false;
+	}
+
+	const auto wire_order_result =
+		depthwire::pipeline::EngineWireAdapter::to_wire_order(order, outbound_sequence++);
+
+	if (!wire_order_result) {
+		++counters.failures;
+		return false;
+	}
+
+	const auto &wire_order = *wire_order_result;
+
+	depthwire::wire::EthernetFrame outbound_frame{};
+
+	if (!depthwire::wire::encode_order_frame(order_envelope, wire_order, outbound_frame)) {
+		++counters.failures;
+		return false;
+	}
+
+	rte_mbuf *tx_packet = rte_pktmbuf_alloc(link.mempool());
+
+	if (tx_packet == nullptr) {
+		++counters.failures;
+		return false;
+	}
+
+	void *destination = rte_pktmbuf_append(tx_packet, static_cast<std::uint16_t>(outbound_frame.size()));
+
+	if (destination == nullptr) {
+		rte_pktmbuf_free(tx_packet);
+		++counters.failures;
+		return false;
+	}
+
+	std::memcpy(destination, outbound_frame.data(), outbound_frame.size());
+
+	if (!link.transmit_engine_packet(tx_packet)) {
+		++counters.failures;
+		return false;
+	}
+
+	const std::uint64_t end_cycles = rte_rdtsc_precise();
+
+	measured_cycles = end_cycles - start_cycles;
+	++counters.orders_emitted;
+
+	depthwire::wire::EthernetFrame drained_order_frame{};
+
+	if (!link.drain_generated_order(drained_order_frame)) {
+		++counters.failures;
+		return false;
+	}
+
+	engine.acknowledge_one_order();
+
+	if (validate_outbound) {
+		const auto decode_result =
+			depthwire::wire::decode_order_frame(std::span<const std::byte>(drained_order_frame));
+
+		if (!decode_result) {
+			++counters.failures;
+			return false;
+		}
+
+		const auto &decoded_order = decode_result->message;
+
+		if (decoded_order.instrument_id != 77 || decoded_order.price_ticks != 100100 ||
+		    decoded_order.quantity != 10 || decoded_order.side != depthwire::wire::Side::buy) {
+			++counters.failures;
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void print_summary(const char *label, const depthwire::dpdk::LatencySummary &summary)
+{
+	std::printf("%s\n", label);
+	std::printf("  Samples:              %zu\n", summary.samples);
+	std::printf("  Mean latency:         %.3f ns\n", summary.mean_ns);
+	std::printf("  p50 latency:          %.3f ns\n", summary.p50_ns);
+	std::printf("  p95 latency:          %.3f ns\n", summary.p95_ns);
+	std::printf("  p99 latency:          %.3f ns\n", summary.p99_ns);
+	std::printf("  p99.9 latency:        %.3f ns\n", summary.p999_ns);
+	std::printf("  Maximum latency:      %.3f ns\n", summary.maximum_ns);
+}
+
+} // namespace
+
+int main(int argc, char **argv)
+{
+	if (rte_eal_init(argc, argv) < 0) {
+		std::fprintf(stderr, "DepthWire failure: EAL initialisation failed\n");
+		return EXIT_FAILURE;
+	}
+
+	const std::uint64_t tsc_hz = rte_get_tsc_hz();
+
+	if (tsc_hz == 0) {
+		std::fprintf(stderr, "DepthWire failure: invalid TSC frequency\n");
+		rte_eal_cleanup();
+		return EXIT_FAILURE;
+	}
+
+	bool success = true;
+
+	depthwire::dpdk::DpdkLatencyRecorder timer_overhead(kTimerOverheadSamples, tsc_hz);
+
+	for (std::size_t sample = 0; sample < kTimerOverheadSamples; ++sample) {
+		const std::uint64_t start = rte_rdtsc_precise();
+		const std::uint64_t end = rte_rdtsc_precise();
+
+		if (!timer_overhead.record_cycles(end - start)) {
+			success = false;
+			break;
+		}
+	}
+
+	depthwire::dpdk::DpdkLatencyRecorder latency_recorder(kMeasuredEvents, tsc_hz);
+
+	BenchmarkCounters warmup_counters{};
+	BenchmarkCounters measured_counters{};
+
+	{
+		depthwire::dpdk::LatencyVirtualLink link{};
+
+		if (!link.initialise()) {
+			std::fprintf(stderr, "DepthWire failure: virtual DPDK link initialisation failed: %s\n",
+				     rte_strerror(rte_errno));
+			success = false;
+		} else {
+			depthwire::EngineConfig config{};
+			config.instrument_id = 77;
+			config.strategy.imbalance_threshold_bps = 6000;
+			config.strategy.order_quantity = 10;
+
+			config.risk.max_order_quantity = 100;
+			config.risk.max_absolute_position = 100'000'000;
+			config.risk.max_notional_ticks = 15'000'000'000'000ULL;
+			config.risk.max_outstanding_orders = 64;
+
+			depthwire::TradingEngine<64> engine(config);
+
+			std::uint32_t incoming_sequence = 1;
+			std::uint32_t outbound_sequence = 1;
+
+			const auto market_envelope = make_market_envelope();
+			const auto order_envelope = make_order_envelope();
+
+			if (success && !seed_balanced_book(link, engine, incoming_sequence)) {
+				std::fprintf(stderr, "DepthWire failure: book seeding failed\n");
+				success = false;
+			}
+
+			for (std::size_t event = 0; event < kWarmupEvents && success; ++event) {
+				std::uint64_t unused_cycles{};
+
+				const bool validate = event == 0 || event + 1 == kWarmupEvents;
+
+				success = run_order_iteration(link, engine, market_envelope, order_envelope,
+							      incoming_sequence, outbound_sequence, unused_cycles,
+							      validate, warmup_counters);
+			}
+
+			for (std::size_t event = 0; event < kMeasuredEvents && success; ++event) {
+				std::uint64_t cycles{};
+
+				const bool validate = event == 0 || event + 1 == kMeasuredEvents;
+
+				success = run_order_iteration(link, engine, market_envelope, order_envelope,
+							      incoming_sequence, outbound_sequence, cycles, validate,
+							      measured_counters);
+
+				if (success && !latency_recorder.record_cycles(cycles)) {
+					success = false;
+				}
+			}
+
+			const auto stats = link.statistics();
+
+			if (success) {
+				const auto overhead_summary = timer_overhead.summarise();
+
+				const auto latency_summary = latency_recorder.summarise();
+
+				std::printf("============================================================\n");
+				std::printf("DepthWire - Virtual DPDK Latency Benchmark\n");
+				std::printf("============================================================\n");
+				std::printf("DepthWire version:         %s\n", DEPTHWIRE_PROJECT_VERSION);
+				std::printf("Source revision:           %s\n", DEPTHWIRE_SOURCE_REVISION);
+				std::printf("DPDK version:             %s\n", rte_version());
+				std::printf("Main lcore:               %u\n", rte_lcore_id());
+				std::printf("TSC frequency:            %llu Hz\n",
+					    static_cast<unsigned long long>(tsc_hz));
+				std::printf("Physical NIC used:        No\n");
+				std::printf("Virtual PMD:              Ring PMD\n");
+				std::printf("Frame size:               %zu bytes\n",
+					    depthwire::wire::kEthernetFrameBytesWithoutFcs);
+				std::printf("Warmup order events:      %zu\n", kWarmupEvents);
+				std::printf("Measured order events:    %zu\n", kMeasuredEvents);
+				std::printf("\n");
+
+				std::printf("Measured timing boundary:\n");
+				std::printf("  Start: after engine rte_eth_rx_burst() returned packet\n");
+				std::printf("  End:   after engine rte_eth_tx_burst() accepted order\n");
+				std::printf("  Timer overhead is reported separately and not subtracted.\n");
+				std::printf("\n");
+
+				print_summary("Timer read overhead:", overhead_summary);
+				std::printf("\n");
+				print_summary("Application-side DPDK packet path:", latency_summary);
+				std::printf("\n");
+
+				std::printf("Measured counters:\n");
+				std::printf("  Packets received:      %llu\n",
+					    static_cast<unsigned long long>(measured_counters.packets_received));
+				std::printf("  Orders emitted:        %llu\n",
+					    static_cast<unsigned long long>(measured_counters.orders_emitted));
+				std::printf("  Failures:              %llu\n",
+					    static_cast<unsigned long long>(measured_counters.failures));
+				std::printf("\n");
+
+				std::printf("Virtual port counters including setup and warmup:\n");
+				std::printf("  Generator TX packets: %llu\n",
+					    static_cast<unsigned long long>(stats.generator_tx));
+				std::printf("  Generator RX packets: %llu\n",
+					    static_cast<unsigned long long>(stats.generator_rx));
+				std::printf("  Engine RX packets:    %llu\n",
+					    static_cast<unsigned long long>(stats.engine_rx));
+				std::printf("  Engine TX packets:    %llu\n",
+					    static_cast<unsigned long long>(stats.engine_tx));
+				std::printf("\n");
+
+				std::printf("Classification:\n");
+				std::printf("  Virtual DPDK application-side packet-in to packet-out latency.\n");
+				std::printf("  This is not physical NIC wire latency or exchange RTT.\n");
+				std::printf("\n");
+				std::printf("Status:                   OK\n");
+			}
+		}
+	}
+
+	const int cleanup_result = rte_eal_cleanup();
+
+	if (!success || cleanup_result != 0) {
+		return EXIT_FAILURE;
+	}
+
+	return EXIT_SUCCESS;
+}
