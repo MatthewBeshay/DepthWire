@@ -1,0 +1,183 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# DepthWire requires C++26 library facilities (std::expected, std::byteswap,
+# std::saturating_*, std::print, and GCC-only P2900 contracts). The generic
+# ubuntu-24.04 compilers are too old, so every job pins the Fedora 44 toolchain
+# (GCC 16 / recent Clang / libstdc++ 16 / DPDK 24.11) that the project is
+# validated against locally.
+
+jobs:
+  core:
+    name: Core (${{ matrix.name }})
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: GCC
+            cc: gcc
+            cxx: g++
+          - name: Clang
+            cc: clang
+            cxx: clang++
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
+    steps:
+      - name: Install build tools
+        run: >-
+          dnf install --assumeyes
+          clang
+          cmake
+          gcc-c++
+          git
+          ninja-build
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake --preset core-debug
+      - name: Build
+        run: cmake --build --preset core-debug --parallel 2
+      - name: Test
+        run: ctest --preset core-debug
+
+  quality:
+    name: Format and clang-tidy
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    env:
+      CC: clang
+      CXX: clang++
+    steps:
+      - name: Install Clang tools
+        run: >-
+          dnf install --assumeyes
+          clang
+          clang-tools-extra
+          cmake
+          git
+          ninja-build
+      - uses: actions/checkout@v4
+      - name: Check formatting
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git ls-files -z '*.cpp' '*.hpp' |
+            xargs -0 clang-format --dry-run --Werror
+      - name: Configure clang-tidy
+        run: >-
+          cmake --preset core-debug
+          -DCMAKE_CXX_CLANG_TIDY='clang-tidy;--warnings-as-errors=*'
+      - name: Build with clang-tidy
+        run: cmake --build --preset core-debug --parallel 2
+
+  sanitisers:
+    name: ASan and UBSan
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    env:
+      CC: clang
+      CXX: clang++
+      ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+    steps:
+      - name: Install build tools
+        run: >-
+          dnf install --assumeyes
+          clang
+          cmake
+          compiler-rt
+          git
+          libasan
+          libubsan
+          ninja-build
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake --preset core-sanitised
+      - name: Build
+        run: cmake --build --preset core-sanitised --parallel 2
+      - name: Test
+        run: ctest --preset core-sanitised
+
+  fuzz-smoke:
+    name: Wire-codec fuzz smoke
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    env:
+      CC: clang
+      CXX: clang++
+    steps:
+      - name: Install build tools
+        run: >-
+          dnf install --assumeyes
+          clang
+          cmake
+          compiler-rt
+          git
+          ninja-build
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake --preset core-fuzz
+      - name: Build
+        run: cmake --build --preset core-fuzz --parallel 2
+      - name: Run bounded fuzz smoke test
+        run: ctest --preset core-fuzz -L fuzz
+
+  contracts:
+    name: C++26 contracts (GCC, enforce)
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    env:
+      CC: gcc
+      CXX: g++
+    steps:
+      - name: Install build tools
+        run: >-
+          dnf install --assumeyes
+          cmake
+          gcc-c++
+          git
+          ninja-build
+      - uses: actions/checkout@v4
+      - name: Configure with contracts enabled
+        run: >-
+          cmake --preset core-debug -B build/contracts
+          -DDEPTHWIRE_ENABLE_CONTRACTS=ON
+          -DDEPTHWIRE_CONTRACT_SEMANTIC=enforce
+      - name: Build
+        run: cmake --build build/contracts --parallel 2
+      - name: Test with contracts enforced
+        run: ctest --test-dir build/contracts --output-on-failure
+
+  dpdk:
+    name: DPDK build and virtual-path tests
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    steps:
+      - name: Install build tools and DPDK
+        run: >-
+          dnf install --assumeyes
+          cmake
+          dpdk-devel
+          gcc-c++
+          git
+          ninja-build
+          pkgconf-pkg-config
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake --preset dpdk-release
+      - name: Build
+        run: cmake --build --preset dpdk-release --parallel 2
+      - name: Test virtual DPDK paths
+        run: ctest --preset dpdk-release
