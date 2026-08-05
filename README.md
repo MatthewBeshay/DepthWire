@@ -199,6 +199,34 @@ throughput, and drops. It is not replay-timed or line-rate evidence (use
 `depthwire-replay --mode=paced` for replay-paced offered load); no load
 result is published yet.
 
+The regime benchmark separates the NO_SIGNAL, BUY, and SELL decision paths into
+independent distributions:
+
+```bash
+./build/dpdk-release/benchmarks/depthwire_ring_regimes \
+    -l 0 \
+    --no-pci \
+    --no-huge \
+    --no-shconf \
+    --no-telemetry \
+    --mbuf-pool-ops-name=ring_mp_mc \
+    --file-prefix=dw_regimes_c0
+```
+
+`depthwire_scenario_counters` attributes hardware and software counters to each
+engine outcome, one scenario per process. It needs no DPDK:
+
+```bash
+./build/dpdk-release/benchmarks/depthwire_scenario_counters \
+    --scenario=buy-signal \
+    --iterations=50000000
+```
+
+Scenarios are `no-signal`, `buy-signal`, `sell-signal`, `invalid-frame`,
+`duplicate`, `sequence-gap`, `risk-reject`, and `outbox-full`. Counters are read
+through `perf_event_open` over the measured region and are descriptive (see the
+[methodology](docs/benchmarks/methodology.md)).
+
 ## Performance results
 
 The v1.0.0 replay evidence bundle lives under

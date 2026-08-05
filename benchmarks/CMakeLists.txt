@@ -70,6 +70,40 @@ target_link_libraries(depthwire_ring_regimes PRIVATE
 )
 depthwire_link_ring_pmd(depthwire_ring_regimes)
 
+# The scenario counter benchmark is transport-neutral (no DPDK): it drives the
+# packet processor and engine directly and reads per-scenario hardware counters
+# through perf_event_open. It builds alongside the ring benchmarks.
+depthwire_add_executable(
+    depthwire_scenario_counters
+    "${CMAKE_CURRENT_SOURCE_DIR}/scenario/counters.cpp"
+)
+depthwire_set_benchmark_identity(depthwire_scenario_counters)
+target_include_directories(depthwire_scenario_counters PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}"
+)
+target_link_libraries(depthwire_scenario_counters PRIVATE
+    DepthWire::Engine
+    DepthWire::Pipeline
+    DepthWire::Wire
+)
+target_compile_options(depthwire_scenario_counters PRIVATE
+    $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-O3>
+)
+
+if(BUILD_TESTING)
+    add_test(
+        NAME depthwire_test_scenario_counters_smoke
+        COMMAND depthwire_scenario_counters
+            --scenario=buy-signal
+            --iterations=1000
+            --warmup=100
+    )
+    set_tests_properties(depthwire_test_scenario_counters_smoke PROPERTIES
+        LABELS "benchmark"
+        TIMEOUT 60
+    )
+endif()
+
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     depthwire_add_executable(
         depthwire_afpacket_benchmark_generator

@@ -119,6 +119,45 @@ multi-lcore generation, line-rate capacity, or overload-recovery evidence.
 Compare several burst sizes in independently started processes. Do not publish a
 single favourable burst size without the selection rule and all attempted values.
 
+## Ring evidence collection
+
+Beyond the in-process warm-up each ring benchmark performs before its measured
+phase, a published ring bundle discards one whole warm-up process at every point
+(each latency, regime, and burst point) and then records three fresh processes,
+retaining every recorded run. `scripts/ring/run-evidence.sh` implements this
+policy, gates on the release version and a clean revision, and refuses to
+collect from a dirty or mislabelled tree.
+
+## Scenario counter benchmark
+
+`depthwire_scenario_counters` attributes hardware and software counter cost to
+each distinct engine outcome, one scenario per process. The eight scenarios are
+no-signal, buy-signal, sell-signal, invalid-frame, duplicate, sequence-gap,
+risk-reject, and outbox-full. Each is a deterministic steady-state loop over a
+single prepared stimulus, so the measured region is exactly the repeated
+hot-path call and setup cost is negligible; the benchmark exits non-zero if any
+iteration fails to reach its intended outcome.
+
+Seven scenarios measure the full packet path
+(`pipeline::PacketProcessor::process`, decode to engine to encode, plus an
+acknowledgement for the emitting cases). The outbox-full scenario measures
+`TradingEngine::on_market_update` directly, because the packet processor drains
+its outbox on every call by construction, so backpressure is only reachable at
+the engine boundary; each scenario prints its own measured-boundary line.
+
+The hardware counters (cycles, instructions, branches, branch misses, cache
+references, cache misses) are read through `perf_event_open` over exactly the
+measured region, which the kernel permits without privilege at
+`perf_event_paranoid <= 2` with kernel counting excluded. Each is opened
+independently and scaled by its enabled and running time, exactly as `perf stat`
+does; a `multiplexed` flag reports whether the physical counters were
+time-shared. The operating-system counters (context switches, page faults) come
+from a `getrusage` delta over the same region rather than perf software events,
+which would read a structural zero under the required user-only restriction.
+All of these counters are descriptive: they are reported per fresh process,
+never subtracted from one another, and never hashed into any digest. A collected
+point discards one warm-up process and records three.
+
 ## Replay benchmark (paced offered load)
 
 `depthwire-replay run --mode=paced` replays a validated trace
