@@ -196,8 +196,8 @@ after `--`:
 
 It reports service latency, burst queue-plus-service latency, closed-loop
 throughput, and drops. It is not replay-timed or line-rate evidence (use
-`depthwire-replay --mode=paced` for replay-paced offered load); no load
-result is published yet.
+`depthwire-replay --mode=paced` for replay-paced offered load); its burst
+sweep is published under `results/1.1.0/`.
 
 The regime benchmark separates the NO_SIGNAL, BUY, and SELL decision paths into
 independent distributions:
@@ -235,11 +235,20 @@ nine-point declared rate sweep (three fresh-process runs per point, every
 point published), the reproduced conformance digest, and three
 overload-recovery runs. On the collection host the saturation knee sits
 at 2.0M events/s offered (lossless in every recorded run) and recovery
-from a full ring takes roughly half a millisecond. Every result carries
-full provenance (exact clean revision, environment, warm-up policy,
-timer overhead, every run, raw-output checksums; see the
+from a full ring takes roughly half a millisecond.
+
+The v1.1.0 ring evidence bundle lives under
+[results/1.1.0/fedora44-dpdk24-ring](results/1.1.0/fedora44-dpdk24-ring):
+the Ring PMD service and regime latency distributions, the closed-loop
+burst sweep over sizes 1 through 128 (every burst published), and the
+engine scenario counters attributing per-outcome cost from 4 cycles
+(outbox reject) to about 250 (order emit with encode).
+
+Every result carries full provenance (exact clean revision, environment,
+warm-up policy, timer overhead, every run, raw-output checksums; see the
 [methodology](docs/benchmarks/methodology.md)) and was collected from the
-tagged release revision with `scripts/replay/run-evidence.sh`.
+tagged release revision with `scripts/replay/run-evidence.sh` and
+`scripts/ring/run-evidence.sh`.
 
 ## AF_PACKET path
 

@@ -1,0 +1,25 @@
+command: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=invalid-frame --iterations=50000000 --warmup=1000000
+============================================================
+DepthWire - Engine Scenario Counter Benchmark
+============================================================
+DepthWire version:         1.1.0
+Source revision:           9997170584b2a13c36a2c4a3851692931be3488d
+Scenario:                  invalid-frame
+Iterations:                50000000
+Warmup iterations:         1000000
+Sequence policy:           accept-any
+Measured boundary:         pipeline::PacketProcessor::process (decode reject)
+Counters are descriptive, reported per fresh process, never subtracted or hashed.
+counter cycles:                4849696333
+counter instructions:          5697971854
+counter ipc-milli:             1174
+counter cycles-per-iter-milli: 96993
+counter branches:              899198642
+counter branch-misses:         4758
+counter cache-references:      33800
+counter cache-misses:          7763
+counter context-switches:      43
+counter page-faults:           0
+counter multiplexed:           1
+checksum:                  150000000
+Status:                    OK

@@ -1,0 +1,25 @@
+command: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=duplicate --iterations=50000000 --warmup=1000000
+============================================================
+DepthWire - Engine Scenario Counter Benchmark
+============================================================
+DepthWire version:         1.1.0
+Source revision:           9997170584b2a13c36a2c4a3851692931be3488d
+Scenario:                  duplicate
+Iterations:                50000000
+Warmup iterations:         1000000
+Sequence policy:           require-contiguous
+Measured boundary:         pipeline::PacketProcessor::process (decode -> engine reject)
+Counters are descriptive, reported per fresh process, never subtracted or hashed.
+counter cycles:                6436152218
+counter instructions:          11050372156
+counter ipc-milli:             1716
+counter cycles-per-iter-milli: 128723
+counter branches:              1901064713
+counter branch-misses:         7545
+counter cache-references:      130092
+counter cache-misses:          7529
+counter context-switches:      25
+counter page-faults:           0
+counter multiplexed:           1
+checksum:                  350000000
+Status:                    OK

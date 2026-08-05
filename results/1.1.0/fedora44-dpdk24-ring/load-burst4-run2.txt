@@ -1,0 +1,84 @@
+command: ./build/dpdk-release/benchmarks/depthwire_ring_load -l 0 --no-pci --no-huge --no-shconf --no-telemetry --mbuf-pool-ops-name=ring_mp_mc --file-prefix=dw_ev_ring_load_b4_r2 -- --warmup=100000 --events=1000000 --burst=4
+EAL: Detected CPU lcores: 20
+EAL: Detected NUMA nodes: 1
+EAL: Static memory layout is selected, amount of reserved memory can be adjusted with -m or --socket-mem
+EAL: Detected shared linkage of DPDK
+EAL: Selected IOVA mode 'VA'
+============================================================
+DepthWire - Virtual Ring PMD Burst/Load Benchmark
+============================================================
+DepthWire version:         1.1.0
+Source revision:           9997170584b2a13c36a2c4a3851692931be3488d
+DPDK version:              DPDK 24.11.4
+Main lcore:                0
+TSC frequency:             1996200000 Hz
+Configured burst size:     4
+Warmup events:             100000
+Measured events:           1000000
+
+Timing definitions:
+  Service: each packet's RX return -> its order TX accepted.
+  Queue:   input burst accepted -> each order TX accepted.
+  Throughput includes this single-lcore closed-loop harness,
+  including batch preparation, injection, processing, and drain.
+  Timer overhead is reported separately and not subtracted.
+
+Timer read overhead:
+  Samples:              100000
+  Mean:                 26.828 ns
+  p50:                  30.057 ns
+  p95:                  30.057 ns
+  p99:                  60.114 ns
+  p99.9:                60.114 ns
+  Maximum:              10890.692 ns
+
+Per-packet service latency:
+  Samples:              1000000
+  Mean:                 144.345 ns
+  p50:                  90.171 ns
+  p95:                  280.533 ns
+  p99:                  430.819 ns
+  p99.9:                621.180 ns
+  Maximum:              25909.228 ns
+
+Burst queue-plus-service latency:
+  Samples:              1000000
+  Mean:                 450.085 ns
+  p50:                  420.800 ns
+  p95:                  931.770 ns
+  p99:                  1292.456 ns
+  p99.9:                2033.864 ns
+  Maximum:              26580.503 ns
+
+Measured closed-loop harness throughput: 3827544.886 events/s
+
+Warmup counters:
+  Requested packets:       100000
+  Injected packets:        100000
+  Injection drops:         0
+  Engine RX packets:       100000
+  Orders TX accepted:      100000
+  Order TX drops:          0
+  Invalid/unexpected:      0
+
+Measured counters:
+  Requested packets:       1000000
+  Injected packets:        1000000
+  Injection drops:         0
+  Engine RX packets:       1000000
+  Orders TX accepted:      1000000
+  Order TX drops:          0
+  Invalid/unexpected:      0
+
+Virtual port counters including seed and warmup:
+  Generator TX:            1100010
+  Generator RX:            1100000
+  Engine RX:               1100010
+  Engine TX:               1100000
+
+Classification:
+  Deterministic virtual Ring PMD burst pressure on one lcore.
+  This is not replay-driven arrival timing, line-rate capacity,
+  physical-NIC latency, wire latency, or exchange RTT.
+
+Status:                    OK

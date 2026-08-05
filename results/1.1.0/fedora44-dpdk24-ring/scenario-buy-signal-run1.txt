@@ -1,0 +1,25 @@
+command: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=buy-signal --iterations=50000000 --warmup=1000000
+============================================================
+DepthWire - Engine Scenario Counter Benchmark
+============================================================
+DepthWire version:         1.1.0
+Source revision:           9997170584b2a13c36a2c4a3851692931be3488d
+Scenario:                  buy-signal
+Iterations:                50000000
+Warmup iterations:         1000000
+Sequence policy:           accept-any
+Measured boundary:         pipeline::PacketProcessor::process (decode -> engine -> encode) + ack
+Counters are descriptive, reported per fresh process, never subtracted or hashed.
+counter cycles:                12338485089
+counter instructions:          32122205860
+counter ipc-milli:             2603
+counter cycles-per-iter-milli: 246769
+counter branches:              6352222231
+counter branch-misses:         13705
+counter cache-references:      452249
+counter cache-misses:          22401
+counter context-switches:      69
+counter page-faults:           0
+counter multiplexed:           1
+checksum:                  150000000
+Status:                    OK

@@ -1,0 +1,25 @@
+command: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=outbox-full --iterations=50000000 --warmup=1000000
+============================================================
+DepthWire - Engine Scenario Counter Benchmark
+============================================================
+DepthWire version:         1.1.0
+Source revision:           9997170584b2a13c36a2c4a3851692931be3488d
+Scenario:                  outbox-full
+Iterations:                50000000
+Warmup iterations:         1000000
+Sequence policy:           accept-any
+Measured boundary:         TradingEngine::on_market_update (outbox saturated)
+Counters are descriptive, reported per fresh process, never subtracted or hashed.
+counter cycles:                201581016
+counter instructions:          1398436717
+counter ipc-milli:             6937
+counter cycles-per-iter-milli: 4031
+counter branches:              550664463
+counter branch-misses:         149
+counter cache-references:      1079
+counter cache-misses:          129
+counter context-switches:      2
+counter page-faults:           0
+counter multiplexed:           1
+checksum:                  200000000
+Status:                    OK

@@ -1,0 +1,73 @@
+provenance: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_pre --: --warmup=64 --events=256: --burst=32 
+ring-latency-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_latency -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_lat_w 
+ring-latency-run1: ./build/dpdk-release/benchmarks/depthwire_ring_latency -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_lat_r1 
+ring-latency-run2: ./build/dpdk-release/benchmarks/depthwire_ring_latency -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_lat_r2 
+ring-latency-run3: ./build/dpdk-release/benchmarks/depthwire_ring_latency -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_lat_r3 
+ring-regimes-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_regimes -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_reg_w 
+ring-regimes-run1: ./build/dpdk-release/benchmarks/depthwire_ring_regimes -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_reg_r1 
+ring-regimes-run2: ./build/dpdk-release/benchmarks/depthwire_ring_regimes -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_reg_r2 
+ring-regimes-run3: ./build/dpdk-release/benchmarks/depthwire_ring_regimes -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_reg_r3 
+load-burst1-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b1_w --: --warmup=100000 --events=1000000: --burst=1 
+load-burst1-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b1_r1 --: --warmup=100000 --events=1000000: --burst=1 
+load-burst1-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b1_r2 --: --warmup=100000 --events=1000000: --burst=1 
+load-burst1-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b1_r3 --: --warmup=100000 --events=1000000: --burst=1 
+load-burst2-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b2_w --: --warmup=100000 --events=1000000: --burst=2 
+load-burst2-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b2_r1 --: --warmup=100000 --events=1000000: --burst=2 
+load-burst2-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b2_r2 --: --warmup=100000 --events=1000000: --burst=2 
+load-burst2-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b2_r3 --: --warmup=100000 --events=1000000: --burst=2 
+load-burst4-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b4_w --: --warmup=100000 --events=1000000: --burst=4 
+load-burst4-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b4_r1 --: --warmup=100000 --events=1000000: --burst=4 
+load-burst4-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b4_r2 --: --warmup=100000 --events=1000000: --burst=4 
+load-burst4-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b4_r3 --: --warmup=100000 --events=1000000: --burst=4 
+load-burst8-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b8_w --: --warmup=100000 --events=1000000: --burst=8 
+load-burst8-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b8_r1 --: --warmup=100000 --events=1000000: --burst=8 
+load-burst8-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b8_r2 --: --warmup=100000 --events=1000000: --burst=8 
+load-burst8-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b8_r3 --: --warmup=100000 --events=1000000: --burst=8 
+load-burst16-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b16_w --: --warmup=100000 --events=1000000: --burst=16 
+load-burst16-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b16_r1 --: --warmup=100000 --events=1000000: --burst=16 
+load-burst16-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b16_r2 --: --warmup=100000 --events=1000000: --burst=16 
+load-burst16-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b16_r3 --: --warmup=100000 --events=1000000: --burst=16 
+load-burst32-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b32_w --: --warmup=100000 --events=1000000: --burst=32 
+load-burst32-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b32_r1 --: --warmup=100000 --events=1000000: --burst=32 
+load-burst32-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b32_r2 --: --warmup=100000 --events=1000000: --burst=32 
+load-burst32-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b32_r3 --: --warmup=100000 --events=1000000: --burst=32 
+load-burst64-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b64_w --: --warmup=100000 --events=1000000: --burst=64 
+load-burst64-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b64_r1 --: --warmup=100000 --events=1000000: --burst=64 
+load-burst64-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b64_r2 --: --warmup=100000 --events=1000000: --burst=64 
+load-burst64-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b64_r3 --: --warmup=100000 --events=1000000: --burst=64 
+load-burst128-warmup: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b128_w --: --warmup=100000 --events=1000000: --burst=128 
+load-burst128-run1: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b128_r1 --: --warmup=100000 --events=1000000: --burst=128 
+load-burst128-run2: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b128_r2 --: --warmup=100000 --events=1000000: --burst=128 
+load-burst128-run3: ./build/dpdk-release/benchmarks/depthwire_ring_load -l: 0 --no-pci: --no-huge --no-shconf: --no-telemetry --mbuf-pool-ops-name=ring_mp_mc: --file-prefix=dw_ev_ring_load_b128_r3 --: --warmup=100000 --events=1000000: --burst=128 
+scenario-no-signal-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=no-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-no-signal-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=no-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-no-signal-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=no-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-no-signal-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=no-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-buy-signal-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=buy-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-buy-signal-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=buy-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-buy-signal-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=buy-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-buy-signal-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=buy-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-sell-signal-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sell-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-sell-signal-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sell-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-sell-signal-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sell-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-sell-signal-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sell-signal: --iterations=50000000 --warmup=1000000: '' 
+scenario-invalid-frame-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=invalid-frame: --iterations=50000000 --warmup=1000000: '' 
+scenario-invalid-frame-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=invalid-frame: --iterations=50000000 --warmup=1000000: '' 
+scenario-invalid-frame-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=invalid-frame: --iterations=50000000 --warmup=1000000: '' 
+scenario-invalid-frame-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=invalid-frame: --iterations=50000000 --warmup=1000000: '' 
+scenario-duplicate-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=duplicate: --iterations=50000000 --warmup=1000000: '' 
+scenario-duplicate-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=duplicate: --iterations=50000000 --warmup=1000000: '' 
+scenario-duplicate-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=duplicate: --iterations=50000000 --warmup=1000000: '' 
+scenario-duplicate-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=duplicate: --iterations=50000000 --warmup=1000000: '' 
+scenario-sequence-gap-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sequence-gap: --iterations=50000000 --warmup=1000000: '' 
+scenario-sequence-gap-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sequence-gap: --iterations=50000000 --warmup=1000000: '' 
+scenario-sequence-gap-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sequence-gap: --iterations=50000000 --warmup=1000000: '' 
+scenario-sequence-gap-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=sequence-gap: --iterations=50000000 --warmup=1000000: '' 
+scenario-risk-reject-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=risk-reject: --iterations=50000000 --warmup=1000000: '' 
+scenario-risk-reject-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=risk-reject: --iterations=50000000 --warmup=1000000: '' 
+scenario-risk-reject-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=risk-reject: --iterations=50000000 --warmup=1000000: '' 
+scenario-risk-reject-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=risk-reject: --iterations=50000000 --warmup=1000000: '' 
+scenario-outbox-full-warmup: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=outbox-full: --iterations=50000000 --warmup=1000000: '' 
+scenario-outbox-full-run1: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=outbox-full: --iterations=50000000 --warmup=1000000: '' 
+scenario-outbox-full-run2: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=outbox-full: --iterations=50000000 --warmup=1000000: '' 
+scenario-outbox-full-run3: ./build/dpdk-release/benchmarks/depthwire_scenario_counters --scenario=outbox-full: --iterations=50000000 --warmup=1000000: '' 
