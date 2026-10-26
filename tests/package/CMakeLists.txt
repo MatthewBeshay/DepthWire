@@ -8,6 +8,7 @@ find_package(DepthWire 1.0 CONFIG REQUIRED
         Contracts
         Digest
         Engine
+        Ha
         Market
         Order
         Pipeline
@@ -25,6 +26,7 @@ target_link_libraries(depthwire_installed_consumer PRIVATE
     DepthWire::Contracts
     DepthWire::Digest
     DepthWire::Engine
+    DepthWire::Ha
     DepthWire::Market
     DepthWire::Order
     DepthWire::Pipeline

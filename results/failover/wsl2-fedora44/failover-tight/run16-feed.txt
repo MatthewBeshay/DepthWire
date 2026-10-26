@@ -1,0 +1,11 @@
+DepthWire version:         1.1.0
+Source revision:           e15cd4579f8f6dcdd5214f8f55a446e5d774c91f
+Role:                      feed
+Trace file:                tests/fixtures/trace/load_uniform_100k_v1.dwtrace
+Trace records:             100000
+Rate:                      100000 records/s
+Drop rate:                 0.000000 (seed 1)
+feed-sent: 100000
+feed-dropped: 0
+feed-send-errors: 0
+feed-duration-ns: 1286892228

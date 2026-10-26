@@ -171,6 +171,20 @@ target_link_libraries(depthwire_replay INTERFACE
     DepthWire::Wire
 )
 
+depthwire_add_header_library(depthwire_ha Ha)
+target_sources(depthwire_ha INTERFACE
+    FILE_SET HEADERS
+    BASE_DIRS "${PROJECT_SOURCE_DIR}/include"
+    FILES
+        "${PROJECT_SOURCE_DIR}/include/depthwire/ha/codec.hpp"
+        "${PROJECT_SOURCE_DIR}/include/depthwire/ha/failure_detector.hpp"
+        "${PROJECT_SOURCE_DIR}/include/depthwire/ha/gap_tracker.hpp"
+)
+target_link_libraries(depthwire_ha INTERFACE
+    DepthWire::Contracts
+    DepthWire::Wire
+)
+
 set(DEPTHWIRE_INSTALL_TARGETS
     depthwire_contracts
     depthwire_digest
@@ -184,4 +198,5 @@ set(DEPTHWIRE_INSTALL_TARGETS
     depthwire_trace
     depthwire_pipeline
     depthwire_replay
+    depthwire_ha
 )

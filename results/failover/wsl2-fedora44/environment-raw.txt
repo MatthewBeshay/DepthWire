@@ -1,0 +1,99 @@
+== date
+2026-10-26T12:16:13Z
+== revision
+e15cd4579f8f6dcdd5214f8f55a446e5d774c91f
+== binary
+depthwire-ha 1.1.0 (revision e15cd4579f8f6dcdd5214f8f55a446e5d774c91f)
+== uname
+Linux MATTHEW-PC 6.18.33.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Fri Jun  5 01:12:21 UTC 2026 x86_64 GNU/Linux
+== cpu
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           48 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  32
+On-line CPU(s) list:                     0-31
+Vendor ID:                               AuthenticAMD
+Model name:                              AMD Ryzen 9 5950X 16-Core Processor
+CPU family:                              25
+Model:                                   33
+Thread(s) per core:                      2
+Core(s) per socket:                      16
+Socket(s):                               1
+Stepping:                                2
+BogoMIPS:                                6800.05
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr arat umip vaes vpclmulqdq rdpid fsrm
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               512 KiB (16 instances)
+L1i cache:                               512 KiB (16 instances)
+L2 cache:                                8 MiB (16 instances)
+L3 cache:                                32 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-31
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Mitigation; Clear CPU buffers
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+== nproc
+32
+== memory
+MemTotal:       16332512 kB
+SwapTotal:       4194304 kB
+== gcc
+gcc (GCC) 16.1.1 20260515 (Red Hat 16.1.1-2)
+== cmake
+cmake version 4.3.0
+== rmem_max
+net.core.rmem_max = 4194304
+== tc
+tc utility, iproute2-6.17.0, libbpf 1.6.3
+== os-release
+NAME="Fedora Linux"
+VERSION="44 (WSL)"
+RELEASE_TYPE=stable
+ID=fedora
+VERSION_ID=44
+VERSION_CODENAME=""
+PRETTY_NAME="Fedora Linux 44 (WSL)"
+ANSI_COLOR="0;38;2;60;110;180"
+LOGO=fedora-logo-icon
+CPE_NAME="cpe:/o:fedoraproject:fedora:44"
+DEFAULT_HOSTNAME="fedora"
+HOME_URL="https://fedoraproject.org/"
+DOCUMENTATION_URL="https://docs.fedoraproject.org/en-US/fedora/f44/"
+SUPPORT_URL="https://ask.fedoraproject.org/"
+BUG_REPORT_URL="https://bugzilla.redhat.com/"
+REDHAT_BUGZILLA_PRODUCT="Fedora"
+REDHAT_BUGZILLA_PRODUCT_VERSION=44
+REDHAT_SUPPORT_PRODUCT="Fedora"
+REDHAT_SUPPORT_PRODUCT_VERSION=44
+SUPPORT_END=2027-05-19
+VARIANT="WSL"
+VARIANT_ID=wsl
+== topology
+br-dw            UP             2e:30:e2:e8:1a:62 <BROADCAST,MULTICAST,UP,LOWER_UP> 
+-- dw-feed
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0@if21        UP             10.77.0.1/24 fe80::c87a:faff:fec2:3cfe/64 
+-- dw-primary
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0@if22        UP             10.77.0.2/24 fe80::440f:71ff:fe13:a081/64 
+-- dw-standby
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0@if23        UP             10.77.0.3/24 fe80::1c5f:3dff:fe2d:5ec6/64 
