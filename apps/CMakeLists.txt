@@ -49,3 +49,22 @@ if(DEPTHWIRE_ENABLE_DPDK)
     target_link_libraries(depthwire-replay PRIVATE depthwire_dpdk_test_support)
     depthwire_link_ring_pmd(depthwire-replay)
 endif()
+
+# Two-host failover and multicast gap-fill (docs/architecture/failover.md):
+# kernel sockets only, so it builds in every configuration.
+depthwire_add_executable(
+    depthwire-ha
+    "${CMAKE_CURRENT_SOURCE_DIR}/depthwire-ha/main.cpp"
+)
+target_compile_options(depthwire-ha PRIVATE
+    $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-O3>
+)
+target_link_libraries(depthwire-ha PRIVATE
+    DepthWire::Digest
+    DepthWire::Engine
+    DepthWire::Ha
+    DepthWire::Pipeline
+    DepthWire::Replay
+    DepthWire::Trace
+    DepthWire::Wire
+)
