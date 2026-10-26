@@ -1,0 +1,177 @@
+conformance digest: 8211716b9a077a3762b51325d078ad507eb8a015f7843a67dbd42745f21f17cb
+
+## failover-default
+run	promoted	applied-at-promotion	detection-ns	outage-ns	catch-up-ns	digest-equal
+run01	FALSE-FAILOVER	9420	primary fenced after 9423 records (overlap 3)			yes
+run02	FALSE-FAILOVER	22299	primary fenced after 22301 records (overlap 2)			yes
+run03	FALSE-FAILOVER	25989	primary fenced after 25992 records (overlap 3)			yes
+run04	yes	40000	15946298	16742222	430536	yes
+run05	FALSE-FAILOVER	2766	primary fenced after 2769 records (overlap 3)			yes
+run06	yes	40000	15104335	15959069	396757	yes
+run07	FALSE-FAILOVER	21617	primary fenced after 21620 records (overlap 3)			yes
+run08	yes	40000	17132982	18075605	410607	yes
+run09	FALSE-FAILOVER	34487	primary fenced after 34491 records (overlap 4)			yes
+run10	FALSE-FAILOVER	11395	primary fenced after 11398 records (overlap 3)			yes
+run11	FALSE-FAILOVER	3723	primary fenced after 3726 records (overlap 3)			yes
+run12	FALSE-FAILOVER	15832	primary fenced after 15834 records (overlap 2)			yes
+run13	FALSE-FAILOVER	35087	primary fenced after 35089 records (overlap 2)			yes
+run14	FALSE-FAILOVER	11074	primary fenced after 11077 records (overlap 3)			yes
+run15	FALSE-FAILOVER	9301	primary fenced after 9305 records (overlap 4)			yes
+run16	FALSE-FAILOVER	11399	primary fenced after 11401 records (overlap 2)			yes
+run17	FALSE-FAILOVER	6002	primary fenced after 6005 records (overlap 3)			yes
+run18	FALSE-FAILOVER	13617	primary fenced after 13619 records (overlap 2)			yes
+run19	FALSE-FAILOVER	1940	primary fenced after 1943 records (overlap 3)			yes
+run20	yes	40000	15952617	16740241	424726	yes
+detection-ns n=4 p50=15946298 p99=17132982 max=17132982
+outage-ns n=4 p50=16740241 p99=18075605 max=18075605
+catch-up-ns n=4 p50=410607 p99=430536 max=430536
+
+## failover-moderate
+run	promoted	applied-at-promotion	detection-ns	outage-ns	catch-up-ns	digest-equal
+run01	FALSE-FAILOVER	22759	primary fenced after 22762 records (overlap 3)			yes
+run02	FALSE-FAILOVER	4061	primary fenced after 4065 records (overlap 4)			yes
+run03	FALSE-FAILOVER	690	primary fenced after 692 records (overlap 2)			yes
+run04	FALSE-FAILOVER	3269	primary fenced after 3271 records (overlap 2)			yes
+run05	yes	40000	5407268	6100833	238158	yes
+run06	FALSE-FAILOVER	19669	primary fenced after 19673 records (overlap 4)			yes
+run07	FALSE-FAILOVER	2656	primary fenced after 2660 records (overlap 4)			yes
+run08	FALSE-FAILOVER	20902	primary fenced after 20905 records (overlap 3)			yes
+run09	yes	40000	6085656	6956787	387604	yes
+run10	FALSE-FAILOVER	15764	primary fenced after 15768 records (overlap 4)			yes
+run11	FALSE-FAILOVER	16161	primary fenced after 16164 records (overlap 3)			yes
+run12	FALSE-FAILOVER	6947	primary fenced after 6951 records (overlap 4)			yes
+run13	FALSE-FAILOVER	15454	primary fenced after 15457 records (overlap 3)			yes
+run14	FALSE-FAILOVER	24562	primary fenced after 24564 records (overlap 2)			yes
+run15	FALSE-FAILOVER	568	primary fenced after 570 records (overlap 2)			yes
+run16	FALSE-FAILOVER	21943	primary fenced after 21946 records (overlap 3)			yes
+run17	FALSE-FAILOVER	6049	primary fenced after 6051 records (overlap 2)			yes
+run18	FALSE-FAILOVER	3726	primary fenced after 3729 records (overlap 3)			yes
+run19	FALSE-FAILOVER	2286	primary fenced after 2289 records (overlap 3)			yes
+run20	yes	40000	7280196	7958511	268688	yes
+detection-ns n=3 p50=6085656 p99=7280196 max=7280196
+outage-ns n=3 p50=6956787 p99=7958511 max=7958511
+catch-up-ns n=3 p50=268688 p99=387604 max=387604
+
+## failover-tight
+run	promoted	applied-at-promotion	detection-ns	outage-ns	catch-up-ns	digest-equal
+run01	FALSE-FAILOVER	6646	primary fenced after 6649 records (overlap 3)			yes
+run02	FALSE-FAILOVER	24088	primary fenced after 24091 records (overlap 3)			yes
+run03	FALSE-FAILOVER	9961	primary fenced after 9964 records (overlap 3)			yes
+run04	FALSE-FAILOVER	3279	primary fenced after 3283 records (overlap 4)			yes
+run05	FALSE-FAILOVER	6066	primary fenced after 6069 records (overlap 3)			yes
+run06	FALSE-FAILOVER	8161	primary fenced after 8163 records (overlap 2)			yes
+run07	FALSE-FAILOVER	2640	primary fenced after 2644 records (overlap 4)			yes
+run08	FALSE-FAILOVER	2015	primary fenced after 2018 records (overlap 3)			yes
+run09	FALSE-FAILOVER	808	primary fenced after 811 records (overlap 3)			yes
+run10	FALSE-FAILOVER	3106	primary fenced after 3110 records (overlap 4)			yes
+run11	FALSE-FAILOVER	5760	primary fenced after 5764 records (overlap 4)			yes
+run12	FALSE-FAILOVER	2844	primary fenced after 2847 records (overlap 3)			yes
+run13	FALSE-FAILOVER	429	primary fenced after 432 records (overlap 3)			yes
+run14	FALSE-FAILOVER	9320	primary fenced after 9322 records (overlap 2)			yes
+run15	FALSE-FAILOVER	981	primary fenced after 983 records (overlap 2)			yes
+run16	FALSE-FAILOVER	3304	primary fenced after 3307 records (overlap 3)			yes
+run17	FALSE-FAILOVER	18009	primary fenced after 18012 records (overlap 3)			yes
+run18	FALSE-FAILOVER	2761	primary fenced after 2765 records (overlap 4)			yes
+run19	FALSE-FAILOVER	9749	primary fenced after 9751 records (overlap 2)			yes
+run20	FALSE-FAILOVER	4283	primary fenced after 4288 records (overlap 5)			yes
+detection-ns n=0
+outage-ns n=0
+catch-up-ns n=0
+
+## gap-fill-all-0.1
+run	feed-sent	live-received	filled	gaps-seen	gaps-recovered	p50-ns	p99-ns	max-ns	digest-equal
+run01	100000	99907	93	97	97	127289	484386	484386	yes
+run02	100000	99928	72	75	75	116679	276318	276318	yes
+run03	100000	99896	104	114	114	120289	244098	337868	yes
+all-gaps recovery-ns n=286 p50=120289 p99=390998 max=484386
+
+## gap-fill-all-1
+run	feed-sent	live-received	filled	gaps-seen	gaps-recovered	p50-ns	p99-ns	max-ns	digest-equal
+run01	100000	99017	983	1015	1015	98989	344687	3533783	yes
+run02	100000	99012	988	1039	1039	98389	479516	10291393	yes
+run03	100000	98974	1026	1074	1074	100869	1937936	13653756	yes
+all-gaps recovery-ns n=3128 p50=99400 p99=858584 max=13653756
+
+## gap-fill-all-5
+run	feed-sent	live-received	filled	gaps-seen	gaps-recovered	p50-ns	p99-ns	max-ns	digest-equal
+run01	100000	95023	4977	4872	4872	40323552	203971137	207144453	yes
+run02	100000	95052	4948	4799	4799	24125543	203327401	208270596	yes
+run03	100000								NO
+all-gaps recovery-ns n=9671 p50=32074876 p99=203753833 max=208270596
+
+## gap-fill-feed-0.1
+run	feed-sent	live-received	filled	gaps-seen	gaps-recovered	p50-ns	p99-ns	max-ns	digest-equal
+run01	100000	99882	118	128	128	142188	351614	391308	yes
+run02	100000	99885	115	128	128	119739	236278	296026	yes
+run03	100000	99888	112	117	117	117599	254601	289458	yes
+all-gaps recovery-ns n=373 p50=125009 p99=348198 max=391308
+
+## gap-fill-feed-1
+run	feed-sent	live-received	filled	gaps-seen	gaps-recovered	p50-ns	p99-ns	max-ns	digest-equal
+run01	100000	99001	999	1094	1094	106269	308632	351801	yes
+run02	100000	99005	995	1081	1081	103169	372657	633877	yes
+run03	100000	99019	981	1048	1048	106709	311906	407837	yes
+all-gaps recovery-ns n=3223 p50=105533 p99=317898 max=633877
+
+## gap-fill-feed-5
+run	feed-sent	live-received	filled	gaps-seen	gaps-recovered	p50-ns	p99-ns	max-ns	digest-equal
+run01	100000	94992	5008	4970	4970	99449	413837	840264	yes
+run02	100000	94857	5143	5097	5097	111933	465987	833222	yes
+run03	100000	95072	4928	4918	4918	108179	423446	925133	yes
+all-gaps recovery-ns n=14985 p50=106739 p99=436726 max=925133
+
+## failures
+failover-default run 1: exit codes primary=3 standby=0 feed=0
+failover-default run 2: exit codes primary=3 standby=0 feed=0
+failover-default run 3: exit codes primary=3 standby=0 feed=0
+failover-default run 5: exit codes primary=3 standby=0 feed=0
+failover-default run 7: exit codes primary=3 standby=0 feed=0
+failover-default run 9: exit codes primary=3 standby=0 feed=0
+failover-default run 10: exit codes primary=3 standby=0 feed=0
+failover-default run 11: exit codes primary=3 standby=0 feed=0
+failover-default run 12: exit codes primary=3 standby=0 feed=0
+failover-default run 13: exit codes primary=3 standby=0 feed=0
+failover-default run 14: exit codes primary=3 standby=0 feed=0
+failover-default run 15: exit codes primary=3 standby=0 feed=0
+failover-default run 16: exit codes primary=3 standby=0 feed=0
+failover-default run 17: exit codes primary=3 standby=0 feed=0
+failover-default run 18: exit codes primary=3 standby=0 feed=0
+failover-default run 19: exit codes primary=3 standby=0 feed=0
+failover-moderate run 1: exit codes primary=3 standby=0 feed=0
+failover-moderate run 2: exit codes primary=3 standby=0 feed=0
+failover-moderate run 3: exit codes primary=3 standby=0 feed=0
+failover-moderate run 4: exit codes primary=3 standby=0 feed=0
+failover-moderate run 6: exit codes primary=3 standby=0 feed=0
+failover-moderate run 7: exit codes primary=3 standby=0 feed=0
+failover-moderate run 8: exit codes primary=3 standby=0 feed=0
+failover-moderate run 10: exit codes primary=3 standby=0 feed=0
+failover-moderate run 11: exit codes primary=3 standby=0 feed=0
+failover-moderate run 12: exit codes primary=3 standby=0 feed=0
+failover-moderate run 13: exit codes primary=3 standby=0 feed=0
+failover-moderate run 14: exit codes primary=3 standby=0 feed=0
+failover-moderate run 15: exit codes primary=3 standby=0 feed=0
+failover-moderate run 16: exit codes primary=3 standby=0 feed=0
+failover-moderate run 17: exit codes primary=3 standby=0 feed=0
+failover-moderate run 18: exit codes primary=3 standby=0 feed=0
+failover-moderate run 19: exit codes primary=3 standby=0 feed=0
+failover-tight run 1: exit codes primary=3 standby=0 feed=0
+failover-tight run 2: exit codes primary=3 standby=0 feed=0
+failover-tight run 3: exit codes primary=3 standby=0 feed=0
+failover-tight run 4: exit codes primary=3 standby=0 feed=0
+failover-tight run 5: exit codes primary=3 standby=0 feed=0
+failover-tight run 6: exit codes primary=3 standby=0 feed=0
+failover-tight run 7: exit codes primary=3 standby=0 feed=0
+failover-tight run 8: exit codes primary=3 standby=0 feed=0
+failover-tight run 9: exit codes primary=3 standby=0 feed=0
+failover-tight run 10: exit codes primary=3 standby=0 feed=0
+failover-tight run 11: exit codes primary=3 standby=0 feed=0
+failover-tight run 12: exit codes primary=3 standby=0 feed=0
+failover-tight run 13: exit codes primary=3 standby=0 feed=0
+failover-tight run 14: exit codes primary=3 standby=0 feed=0
+failover-tight run 15: exit codes primary=3 standby=0 feed=0
+failover-tight run 16: exit codes primary=3 standby=0 feed=0
+failover-tight run 17: exit codes primary=3 standby=0 feed=0
+failover-tight run 18: exit codes primary=3 standby=0 feed=0
+failover-tight run 19: exit codes primary=3 standby=0 feed=0
+failover-tight run 20: exit codes primary=3 standby=0 feed=0
+gap-fill-all-5 run 3: exit codes primary=1 feed=0
