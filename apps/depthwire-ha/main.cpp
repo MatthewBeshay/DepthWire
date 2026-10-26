@@ -1133,6 +1133,39 @@ int run_primary(const Options &options)
 	LiveReceiver receiver{feed.get(), connect_within(*options.retransmit, kConnectTimeoutMs), engine.record_count(),
 			      ReceiverOptions{0, options.retry_ms * kNanosecondsPerMillisecond, false}};
 
+	const sockaddr_in heartbeat_target = options.heartbeat_to.value_or(sockaddr_in{});
+	const std::uint64_t heartbeat_interval = options.heartbeat_ms * kNanosecondsPerMillisecond;
+	std::uint64_t next_heartbeat = monotonic_ns();
+	std::uint64_t last_heartbeat{};
+	std::uint64_t heartbeat_max_gap{};
+	std::uint64_t replication_max_send{};
+	std::uint64_t heartbeats{};
+	std::array<std::byte, ha::kHeartbeatBytes> heartbeat_bytes{};
+
+	// Checked per record as well as per poll, so a long backlog drain never
+	// starves the standby of heartbeats.
+	const auto heartbeat_tick = [&] {
+		const std::uint64_t now = monotonic_ns();
+
+		if (!heartbeat.valid() || now < next_heartbeat) {
+			return;
+		}
+
+		ha::encode_heartbeat({++heartbeats, engine.applied()}, heartbeat_bytes);
+		static_cast<void>(::sendto(heartbeat.get(), heartbeat_bytes.data(), heartbeat_bytes.size(), 0,
+					   reinterpret_cast<const sockaddr *>(&heartbeat_target),
+					   sizeof(heartbeat_target)));
+		heartbeat_max_gap = last_heartbeat == 0 ? 0 : std::max(heartbeat_max_gap, now - last_heartbeat);
+		last_heartbeat = now;
+		next_heartbeat = now + heartbeat_interval;
+	};
+
+	const auto print_liveness = [&] {
+		std::printf("heartbeats-sent: %llu\n", static_cast<unsigned long long>(heartbeats));
+		std::printf("heartbeat-max-gap-ns: %llu\n", static_cast<unsigned long long>(heartbeat_max_gap));
+		std::printf("replication-max-send-ns: %llu\n", static_cast<unsigned long long>(replication_max_send));
+	};
+
 	std::array<std::byte, ha::kReplicationRecordBytes> replication_bytes{};
 	const std::function<void(const ha::FeedRecord &)> deliver = [&](const ha::FeedRecord &record) {
 		const pipeline::PacketProcessResult result = engine.apply(record.message);
@@ -1143,45 +1176,38 @@ int run_primary(const Options &options)
 			ha::encode_replication_record({record.index, record.message, std::to_underlying(result.status),
 						       std::to_underlying(result.engine_result.status)},
 						      replication_bytes);
+			const std::uint64_t send_start = monotonic_ns();
 
 			if (!send_all(replication.get(), replication_bytes)) {
 				engine.set_kill_switch();
 				std::printf("self-fence: replication write failed after %u records\n",
 					    engine.applied());
+				print_liveness();
 				std::fflush(stdout);
 				std::exit(3);
 			}
+
+			replication_max_send = std::max(replication_max_send, monotonic_ns() - send_start);
 		}
 
 		if (options.die_after != 0 && engine.applied() == options.die_after) {
 			std::printf("primary-applied-at-death: %u\n", engine.applied());
 			std::printf("primary-death-monotonic-ns: %llu\n",
 				    static_cast<unsigned long long>(monotonic_ns()));
+			print_liveness();
 			std::fflush(stdout);
 			std::_Exit(EXIT_SUCCESS);
 		}
+
+		heartbeat_tick();
 	};
 
-	const sockaddr_in heartbeat_target = options.heartbeat_to.value_or(sockaddr_in{});
-	const std::uint64_t heartbeat_interval = options.heartbeat_ms * kNanosecondsPerMillisecond;
-	std::uint64_t next_heartbeat = monotonic_ns();
-	std::uint64_t heartbeats{};
-	std::array<std::byte, ha::kHeartbeatBytes> heartbeat_bytes{};
-
 	while (!engine.finished()) {
-		const std::uint64_t now = monotonic_ns();
-
-		if (heartbeat.valid() && now >= next_heartbeat) {
-			ha::encode_heartbeat({++heartbeats, engine.applied()}, heartbeat_bytes);
-			static_cast<void>(::sendto(heartbeat.get(), heartbeat_bytes.data(), heartbeat_bytes.size(), 0,
-						   reinterpret_cast<const sockaddr *>(&heartbeat_target),
-						   sizeof(heartbeat_target)));
-			next_heartbeat = now + heartbeat_interval;
-		}
-
+		heartbeat_tick();
 		receiver.poll_once(1, deliver);
 	}
 
+	print_liveness();
 	receiver.print_summary();
 	engine.print_result();
 	return EXIT_SUCCESS;
