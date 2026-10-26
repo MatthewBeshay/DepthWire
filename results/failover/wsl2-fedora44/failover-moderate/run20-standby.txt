@@ -1,0 +1,28 @@
+DepthWire version:         1.1.0
+Source revision:           e15cd4579f8f6dcdd5214f8f55a446e5d774c91f
+Role:                      standby
+Trace file:                tests/fixtures/trace/load_uniform_100k_v1.dwtrace
+Trace records:             100000
+promoted: yes
+failure-detected-monotonic-ns: 2279400893086
+last-heartbeat-monotonic-ns: 2279392865298
+detector-timeout-ns: 8000000
+heartbeats-received: 432
+feed-discarded-while-standby: 43882
+applied-at-promotion: 40000
+promoted-first-apply-monotonic-ns: 2279401852189
+promoted-finished-monotonic-ns: 2280151216158
+gap first=40000 count=3882 recovery-ns=1534579
+live-received: 56118
+filled-records: 3882
+duplicates: 0
+rejected-datagrams: 0
+gap-requests: 4
+gaps-seen: 1
+gaps-recovered: 1
+gap-recovery-ns-p50: 1534579
+gap-recovery-ns-p99: 1534579
+gap-recovery-ns-max: 1534579
+records-applied: 100000
+orders-encoded: 99990
+digest-sha256: 8211716b9a077a3762b51325d078ad507eb8a015f7843a67dbd42745f21f17cb

@@ -2,6 +2,9 @@
 #include <depthwire/contracts/contracts.hpp>
 #include <depthwire/digest/sha256.hpp>
 #include <depthwire/engine/trading_engine.hpp>
+#include <depthwire/ha/codec.hpp>
+#include <depthwire/ha/failure_detector.hpp>
+#include <depthwire/ha/gap_tracker.hpp>
 #include <depthwire/market/types.hpp>
 #include <depthwire/order/order_request.hpp>
 #include <depthwire/order/preallocated_outbox.hpp>
@@ -44,6 +47,16 @@ int main()
 	// Exercise the exported DepthWire::Trace package.
 	static_assert(depthwire::trace::trace_file_bytes(1) == 132);
 	static_assert(!depthwire::trace::decode_trace_header({}));
+
+	// Exercise the exported DepthWire::Ha package.
+	static_assert(depthwire::ha::kFeedRecordBytes == 56);
+	depthwire::ha::GapTracker<4> tracker{};
+	depthwire::ha::FeedRecord record{};
+
+	if (tracker.offer(record) != depthwire::ha::OfferStatus::accepted || !tracker.pop(record) ||
+	    depthwire::ha::FailureDetector{1, 1}.failed(2)) {
+		return 1;
+	}
 
 	// Exercise the exported DepthWire::Replay package: schedule building,
 	// synthetic-time pacing, journaling, and the run digest.

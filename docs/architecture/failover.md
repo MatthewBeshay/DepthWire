@@ -78,18 +78,26 @@ with no sockets or clocks, so it can be unit-tested exhaustively:
 
 - index == expected: deliver it, advance.
 - index < expected: duplicate, drop and count it.
-- index > expected: hold it in a bounded reorder buffer (default 4096 records)
-  and report the missing range `[expected, index)`. The caller sends one
-  gap-fill request for the range, and re-sends it if nothing arrives within
-  the retry interval.
+- index > expected: hold it in a bounded reorder buffer and report the
+  missing range `[expected, index)`. `GapTracker` takes the capacity as a
+  template argument (default 4096). `depthwire-ha` uses 16384 records, which
+  is 164 ms of feed at 100k records/s, enough for a standby's detection
+  timeout plus its catch-up request.
 - When the missing records arrive, deliver them and everything contiguous
   behind them in index order.
 - If the reorder buffer is full, fail closed: stop processing and report.
   Never trade past a hole.
 
+`depthwire-ha` requests each hole as soon as a later datagram exposes it.
+Requests are capped at 1024 records, and the rest of a longer hole is
+requested as soon as the front of the hole reaches it. The front hole is
+re-requested after the retry interval (default 10 ms). If the feed goes quiet
+with records still missing at the end, a tail request covers them, because
+nothing later will ever expose that hole.
+
 Recovery time for one gap is measured from detection (the first datagram past
 the hole) to the moment the last missing record is delivered. It uses
-`std::chrono::steady_clock` in the receiving process.
+`CLOCK_MONOTONIC` in the receiving process.
 
 The feed retains the whole trace for retransmission. A real venue keeps a
 bounded window and falls back to a snapshot, which is out of scope here.
@@ -120,6 +128,11 @@ the primary failed when no heartbeat has arrived for K x H (default K = 4,
 so 20 ms). The `FailureDetector` takes time as an argument and is unit-tested
 without sleeping.
 
+The primary checks whether a heartbeat is due after every record it applies, as
+well as on every poll, so draining a backlog never starves the standby. An
+earlier revision checked only on every poll, and it produced false failovers
+(`results/failover/superseded-5a2d096/`).
+
 | Lower H x K | Higher H x K |
 |---|---|
 | Faster takeover | Fewer false failovers when a heartbeat is delayed by scheduling, GC-like pauses elsewhere on the host, or a congested link |
@@ -131,7 +144,8 @@ setting.
 
 On declaring failure, the standby:
 
-1. stops accepting replication records and closes that connection;
+1. applies the replication records it has already received, then closes
+   that connection;
 2. reads `applied_count`, the next record index it needs;
 3. starts consuming the multicast feed it joined at startup, where it was
    discarding datagrams, and requests gap-fill for
@@ -146,9 +160,14 @@ On declaring failure, the standby:
 both hosts would trade. Two measures bound this:
 
 - **Self-fencing.** The primary sets its kill switch and stops when a
-  replication write fails, or when it cannot write for one lease interval.
-  Replication and heartbeats share a network path, so the partition that
-  makes the standby promote also stops the primary.
+  replication write fails. Replication and heartbeats share a network path,
+  so the partition that makes the standby promote also stops the primary.
+  A promoting standby closes the replication connection, so a primary that
+  was only slow, not dead, also fences on its next write. The records it
+  applied in between are the split-brain overlap, and the measurements report
+  it. A lease timer that fences a primary whose writes merely stall is not
+  implemented. A stalled write stops that primary's heartbeats, which the
+  standby treats as a failure.
 - **The venue is the final fence.** A real exchange session permits one logon
   per session ID. A second engine logging on is rejected or disconnects the
   first.
@@ -162,18 +181,28 @@ order with the same client order ID, and a venue that rejects duplicate
 client order IDs drops it. Write-ahead replication makes that window at most
 the records still in flight when the primary died.
 
+`--die-after N` models a process crash. The kernel still delivers what the
+process had written, so in these tests the standby always holds every record
+the primary applied. A host crash can lose records still in flight, and the
+duplicate-order argument above covers that case.
+
 ## Testing and evidence
 
 | Test | Kind | Pass condition |
 |---|---|---|
 | `GapTracker`, `FailureDetector`, codecs | unit, no sockets | all orderings, duplicates, overflow, timeouts |
-| failover script test | `ctest`, loopback, no root | primary dies after record N, standby promotes, final digest == conformance digest |
-| gap-fill script test | `ctest`, loopback, seeded application-level drop | final digest == lossless digest; every gap recovered |
-| failover measurement | namespaces + bridge, root | detection latency and total outage, 20 runs, p50/p99/max |
-| gap-fill measurement | namespaces + `tc netem loss` at 0.1%, 1%, 5% | recovery time p50/p99/max, gaps recovered / gaps seen |
+| failover script test (`cmake/RunHaFailover.cmake`) | `ctest`, loopback unicast fan-out, no root | primary dies after record N, standby promotes, final digest == conformance digest |
+| gap-fill script test (`cmake/RunHaGapFill.cmake`) | `ctest`, loopback, seeded application-level drop | final digest == lossless digest; every gap recovered |
+| failover measurement | namespaces + bridge + multicast, root | detection latency, outage and catch-up, 20 runs at each heartbeat setting, p50/p99/max; false failovers and their split-brain overlap |
+| gap-fill measurement | namespaces + `tc netem loss` at 0.1%, 1%, 5%, on feed datagrams only and on all traffic | recovery time p50/p99/max, gaps recovered / gaps seen |
 
-Measurements go to `results/failover/` with the commands used and the
-environment, following `benchmarks/methodology.md`.
+The CI script tests use unicast fan-out on loopback because a CI container
+cannot configure multicast routing. The measurements use real multicast on the
+bridge. `scripts/ha/setup-netns.sh` builds the topology and
+`scripts/ha/run-evidence.sh` collects the runs. Measurements go to
+`results/failover/` with the commands used and the environment, following
+`benchmarks/methodology.md`. They are taken from a branch revision, not a
+tagged release, and say so.
 
 ## Open questions for reviewers
 
