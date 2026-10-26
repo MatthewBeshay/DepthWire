@@ -56,6 +56,7 @@ depthwire_add_executable(
     depthwire-ha
     "${CMAKE_CURRENT_SOURCE_DIR}/depthwire-ha/main.cpp"
 )
+depthwire_set_benchmark_identity(depthwire-ha)
 target_compile_options(depthwire-ha PRIVATE
     $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-O3>
 )

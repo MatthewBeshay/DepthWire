@@ -62,6 +62,7 @@ using Tracker = ha::GapTracker<kTrackerCapacity>;
 void print_usage(const char *const executable)
 {
 	std::printf("Usage:\n");
+	std::printf("  %s --version\n", executable);
 	std::printf("  %s feed --trace=FILE --to=ADDR:PORT[,ADDR:PORT...] --retransmit-listen=ADDR:PORT\n", executable);
 	std::printf("        [--rate=N] [--drop-rate=P --seed=N] [--start-delay-ms=N] [--linger-ms=N]\n");
 	std::printf("        [--interface=ADDR] [--report=FILE]\n");
@@ -563,9 +564,10 @@ private:
 		return 0;
 	}
 
+	// Nearest rank, ceil(q * N), as in docs/benchmarks/methodology.md.
 	std::ranges::sort(values);
-	const std::size_t rank = ((values.size() - 1) * per_mille + 999) / 1000;
-	return values[rank];
+	const std::size_t rank = std::max<std::size_t>(1, ((values.size() * per_mille) + 999) / 1000);
+	return values[rank - 1];
 }
 
 struct ReceiverOptions {
@@ -951,6 +953,8 @@ struct Options {
 
 void print_role(const char *const role, const Options &options, const trace::TraceSummary &summary)
 {
+	std::printf("DepthWire version:         %s\n", DEPTHWIRE_PROJECT_VERSION);
+	std::printf("Source revision:           %s\n", DEPTHWIRE_SOURCE_REVISION);
 	std::printf("Role:                      %s\n", role);
 	std::printf("Trace file:                %s\n", options.trace_path);
 	std::printf("Trace records:             %u\n", summary.header.record_count);
@@ -1323,6 +1327,11 @@ int run_standby(const Options &options)
 int main(int argc, char **argv)
 {
 	const std::span<char *> arguments(argv, static_cast<std::size_t>(argc));
+
+	if (arguments.size() == 2 && std::string_view{arguments[1]} == "--version") {
+		std::printf("depthwire-ha %s (revision %s)\n", DEPTHWIRE_PROJECT_VERSION, DEPTHWIRE_SOURCE_REVISION);
+		return EXIT_SUCCESS;
+	}
 
 	if (arguments.size() < 2) {
 		print_usage(arguments[0]);
