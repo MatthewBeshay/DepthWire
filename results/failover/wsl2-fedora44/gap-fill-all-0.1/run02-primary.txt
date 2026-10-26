@@ -1,0 +1,138 @@
+DepthWire version:         1.1.0
+Source revision:           e15cd4579f8f6dcdd5214f8f55a446e5d774c91f
+Role:                      primary
+Trace file:                tests/fixtures/trace/load_uniform_100k_v1.dwtrace
+Trace records:             100000
+heartbeats-sent: 0
+heartbeat-max-gap-ns: 0
+replication-max-send-ns: 0
+gap first=70 count=1 recovery-ns=327867
+gap first=992 count=1 recovery-ns=280662
+gap first=1008 count=1 recovery-ns=132969
+gap first=1053 count=1 recovery-ns=132659
+gap first=1123 count=1 recovery-ns=80360
+gap first=1618 count=1 recovery-ns=116409
+gap first=2916 count=1 recovery-ns=153409
+gap first=3878 count=1 recovery-ns=116639
+gap first=5019 count=1 recovery-ns=131018
+gap first=5127 count=1 recovery-ns=95310
+gap first=6110 count=1 recovery-ns=135851
+gap first=6931 count=1 recovery-ns=141959
+gap first=7308 count=1 recovery-ns=127248
+gap first=8508 count=1 recovery-ns=113800
+gap first=8823 count=1 recovery-ns=89500
+gap first=10689 count=1 recovery-ns=126289
+gap first=10868 count=1 recovery-ns=103089
+gap first=11027 count=1 recovery-ns=89220
+gap first=11530 count=1 recovery-ns=149508
+gap first=12528 count=1 recovery-ns=118279
+gap first=13147 count=1 recovery-ns=129839
+gap first=14651 count=1 recovery-ns=315698
+gap first=14686 count=1 recovery-ns=113309
+gap first=15354 count=1 recovery-ns=156259
+gap first=16699 count=1 recovery-ns=136379
+gap first=17267 count=1 recovery-ns=147349
+gap first=17988 count=1 recovery-ns=139539
+gap first=18403 count=1 recovery-ns=96309
+gap first=20211 count=1 recovery-ns=151860
+gap first=21009 count=1 recovery-ns=163547
+gap first=21129 count=1 recovery-ns=150609
+gap first=22134 count=1 recovery-ns=152779
+gap first=23305 count=1 recovery-ns=469725
+gap first=23327 count=1 recovery-ns=93469
+gap first=24163 count=1 recovery-ns=136939
+gap first=24807 count=1 recovery-ns=113209
+gap first=27149 count=1 recovery-ns=118170
+gap first=29106 count=1 recovery-ns=103820
+gap first=30334 count=1 recovery-ns=121589
+gap first=30871 count=1 recovery-ns=166199
+gap first=32276 count=1 recovery-ns=176889
+gap first=32290 count=1 recovery-ns=59229
+gap first=33386 count=1 recovery-ns=119759
+gap first=34921 count=1 recovery-ns=110879
+gap first=35762 count=1 recovery-ns=132479
+gap first=37271 count=1 recovery-ns=153389
+gap first=37773 count=1 recovery-ns=111139
+gap first=38125 count=1 recovery-ns=91660
+gap first=39126 count=1 recovery-ns=211114
+gap first=39483 count=1 recovery-ns=246988
+gap first=40913 count=1 recovery-ns=123839
+gap first=41179 count=1 recovery-ns=125670
+gap first=41186 count=1 recovery-ns=130669
+gap first=42834 count=1 recovery-ns=150690
+gap first=44388 count=1 recovery-ns=253478
+gap first=45740 count=1 recovery-ns=118399
+gap first=45967 count=1 recovery-ns=180389
+gap first=45976 count=1 recovery-ns=182799
+gap first=46423 count=1 recovery-ns=102460
+gap first=46673 count=1 recovery-ns=242930
+gap first=46684 count=1 recovery-ns=71010
+gap first=46948 count=1 recovery-ns=128199
+gap first=48460 count=1 recovery-ns=160929
+gap first=48860 count=1 recovery-ns=109370
+gap first=49782 count=1 recovery-ns=110039
+gap first=53689 count=1 recovery-ns=198039
+gap first=53847 count=1 recovery-ns=183289
+gap first=53858 count=1 recovery-ns=75929
+gap first=56328 count=1 recovery-ns=110400
+gap first=57639 count=1 recovery-ns=132969
+gap first=59104 count=1 recovery-ns=114119
+gap first=59299 count=1 recovery-ns=103450
+gap first=59477 count=1 recovery-ns=7097866
+gap first=59832 count=1 recovery-ns=229668
+gap first=59996 count=1 recovery-ns=113109
+gap first=61857 count=1 recovery-ns=305268
+gap first=62145 count=1 recovery-ns=115379
+gap first=64116 count=1 recovery-ns=212028
+gap first=64134 count=1 recovery-ns=66670
+gap first=65337 count=1 recovery-ns=137609
+gap first=67371 count=1 recovery-ns=115159
+gap first=69298 count=1 recovery-ns=185379
+gap first=69983 count=1 recovery-ns=138448
+gap first=69991 count=1 recovery-ns=78448
+gap first=71264 count=1 recovery-ns=109519
+gap first=71502 count=1 recovery-ns=88239
+gap first=73295 count=1 recovery-ns=132719
+gap first=75811 count=1 recovery-ns=119539
+gap first=78893 count=1 recovery-ns=153148
+gap first=82354 count=1 recovery-ns=131819
+gap first=83755 count=1 recovery-ns=111759
+gap first=84857 count=1 recovery-ns=212349
+gap first=84871 count=1 recovery-ns=53910
+gap first=85388 count=1 recovery-ns=195117
+gap first=85405 count=1 recovery-ns=68810
+gap first=85652 count=1 recovery-ns=98949
+gap first=86529 count=1 recovery-ns=102419
+gap first=86613 count=1 recovery-ns=94390
+gap first=88091 count=1 recovery-ns=100199
+gap first=88717 count=1 recovery-ns=107519
+gap first=88946 count=1 recovery-ns=136092
+gap first=90069 count=1 recovery-ns=107339
+gap first=90088 count=1 recovery-ns=177441
+gap first=90374 count=1 recovery-ns=121109
+gap first=90664 count=1 recovery-ns=91099
+gap first=90767 count=1 recovery-ns=102649
+gap first=91132 count=1 recovery-ns=96640
+gap first=92169 count=1 recovery-ns=137319
+gap first=92609 count=1 recovery-ns=125289
+gap first=94372 count=1 recovery-ns=142939
+gap first=97827 count=1 recovery-ns=121419
+gap first=97911 count=1 recovery-ns=98739
+gap first=98019 count=1 recovery-ns=100540
+gap first=98218 count=1 recovery-ns=198759
+gap first=98464 count=1 recovery-ns=227147
+gap first=98483 count=1 recovery-ns=56410
+gap first=99923 count=1 recovery-ns=122609
+live-received: 99890
+filled-records: 110
+duplicates: 7
+rejected-datagrams: 0
+gap-requests: 117
+gaps-seen: 117
+gaps-recovered: 117
+gap-recovery-ns-p50: 125670
+gap-recovery-ns-p99: 469725
+gap-recovery-ns-max: 7097866
+records-applied: 100000
+orders-encoded: 99990
+digest-sha256: 8211716b9a077a3762b51325d078ad507eb8a015f7843a67dbd42745f21f17cb

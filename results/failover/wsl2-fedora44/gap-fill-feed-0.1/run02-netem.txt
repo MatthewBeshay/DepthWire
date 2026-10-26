@@ -1,0 +1,6 @@
+qdisc prio 1: root refcnt 33 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 9804374 bytes 100011 pkt (dropped 115, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 loss 0.1% seed 1099904733865286721
+ Sent 9788730 bytes 99885 pkt (dropped 115, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
