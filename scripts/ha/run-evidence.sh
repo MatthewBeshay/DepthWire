@@ -6,6 +6,7 @@
 # failures.txt rather than dropped.
 #
 #   failover-default  RUNS runs, heartbeat 5 ms, 4 missed (20 ms timeout)
+#   failover-moderate RUNS runs, heartbeat 2 ms, 4 missed (8 ms timeout)
 #   failover-tight    RUNS runs, heartbeat 1 ms, 3 missed (3 ms timeout)
 #   gap-fill          LOSS_RUNS runs at each netem loss rate on the primary's
 #                     link, once on feed datagrams only and once on all
@@ -221,6 +222,10 @@ for run in $(seq 1 "${RUNS}"); do
 done
 
 for run in $(seq 1 "${RUNS}"); do
+    run_failover failover-moderate 2 4 "${run}"
+done
+
+for run in $(seq 1 "${RUNS}"); do
     run_failover failover-tight 1 3 "${run}"
 done
 
@@ -255,7 +260,7 @@ field() {
     echo "conformance digest: ${EXPECTED_DIGEST}"
     echo
 
-    for label in failover-default failover-tight; do
+    for label in failover-default failover-moderate failover-tight; do
         echo "## ${label}"
         printf 'run\tpromoted\tapplied-at-promotion\tdetection-ns\toutage-ns\tcatch-up-ns\tdigest-equal\n'
         : >"${SCRATCH}/detection" ; : >"${SCRATCH}/outage" ; : >"${SCRATCH}/catchup"
@@ -269,6 +274,20 @@ field() {
             first_apply="$(field "${standby}" promoted-first-apply-monotonic-ns)"
             catch_up="$(sed -n 's/^gap first=[0-9]* count=[0-9]* recovery-ns=//p' "${standby}" | head -1)"
             digest="$(field "${standby}" digest-sha256)"
+
+            # A standby that promoted while the primary was alive: the primary
+            # fences itself when replication breaks, and every record past
+            # the standby's promotion point that the primary also applied is
+            # split-brain exposure.
+            fenced="$(sed -n 's/^self-fence: replication write failed after \([0-9]*\) records$/\1/p' "${primary}")"
+
+            if [[ -n "${fenced}" && -n "${detected}" ]]; then
+                applied="$(field "${standby}" applied-at-promotion)"
+                printf '%s\tFALSE-FAILOVER\t%s\tprimary fenced after %s records (overlap %s)\t\t\t%s\n' "${run}" \
+                    "${applied}" "${fenced}" "$((fenced - applied))" \
+                    "$([[ "${digest}" == "${EXPECTED_DIGEST}" ]] && echo yes || echo NO)"
+                continue
+            fi
 
             if [[ -z "${death}" || -z "${detected}" || -z "${first_apply}" ]]; then
                 printf '%s\tINCOMPLETE\n' "${run}"

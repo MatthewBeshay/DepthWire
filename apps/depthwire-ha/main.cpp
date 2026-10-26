@@ -84,8 +84,10 @@ void print_usage(const char *const executable)
 	return (static_cast<std::uint64_t>(now.tv_sec) * 1'000'000'000ULL) + static_cast<std::uint64_t>(now.tv_nsec);
 }
 
+// Failures go to the report as well as stderr, so a failed run's report says why.
 [[noreturn]] void fail(const char *const message)
 {
+	std::printf("failure: %s\n", message);
 	std::fflush(stdout);
 	std::fprintf(stderr, "DepthWire failure: %s\n", message);
 	std::exit(EXIT_FAILURE);
@@ -94,6 +96,7 @@ void print_usage(const char *const executable)
 [[noreturn]] void fail_errno(const char *const operation)
 {
 	const int error = errno;
+	std::printf("failure: %s: %s\n", operation, std::strerror(error));
 	std::fflush(stdout);
 	std::fprintf(stderr, "DepthWire failure: %s: %s\n", operation, std::strerror(error));
 	std::exit(EXIT_FAILURE);
@@ -773,12 +776,15 @@ private:
 
 		++requests_;
 		last_request_ns_ = now;
+		requested_end_ = std::max(requested_end_, first + std::min(count, kMaxRequestRecords));
 	}
 
 	void request_gaps(const std::uint64_t now)
 	{
+		// A capped request leaves the rest of a long hole unrequested; ask for it
+		// as soon as the hole's front reaches it rather than after a retry.
 		if (const auto gap = tracker_->front_gap()) {
-			if (now - last_request_ns_ >= options_.retry_ns) {
+			if (gap->first_index >= requested_end_ || now - last_request_ns_ >= options_.retry_ns) {
 				send_request(gap->first_index, gap->count, now);
 			}
 
@@ -812,6 +818,7 @@ private:
 	std::uint32_t frontier_{};
 	std::uint32_t pending_records_{};
 	std::uint32_t tail_end_{};
+	std::uint32_t requested_end_{};
 	ReceiverOptions options_{};
 	std::uint64_t last_live_ns_{};
 	std::uint64_t last_request_ns_{};
