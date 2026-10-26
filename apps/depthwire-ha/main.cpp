@@ -143,8 +143,9 @@ template<typename Number> [[nodiscard]] bool parse_number(const std::string_view
 		return false;
 	}
 
+	const char *const first = text.data();
 	const char *const last = text.data() + text.size();
-	const auto result = std::from_chars(text.data(), last, output);
+	const auto result = std::from_chars(first, last, output);
 	return result.ec == std::errc{} && result.ptr == last;
 }
 

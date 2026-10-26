@@ -62,7 +62,8 @@ void test_gap_fill_round_trip()
 
 	std::array<std::byte, ha::kGapFillResponseHeaderBytes> header{};
 	ha::encode_gap_fill_response_header(0xFFFFFFFFU, header);
-	assert(ha::decode_gap_fill_response_header(header).value() == 0xFFFFFFFFU);
+	const auto count = ha::decode_gap_fill_response_header(header);
+	assert(count && *count == 0xFFFFFFFFU);
 	assert(ha::decode_gap_fill_response_header(std::span<const std::byte>(header).first(3)).error() ==
 	       ha::CodecError::wrong_size);
 }

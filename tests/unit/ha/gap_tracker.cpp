@@ -64,7 +64,8 @@ void test_gap_is_reported_and_filled()
 	assert(gap && gap->first_index == 1 && gap->count == 2);
 
 	assert(tracker.offer(record_at(2)) == ha::OfferStatus::accepted);
-	assert(tracker.front_gap()->count == 1);
+	const auto narrowed = tracker.front_gap();
+	assert(narrowed && narrowed->count == 1);
 	assert(tracker.offer(record_at(1)) == ha::OfferStatus::accepted);
 	assert((drain(tracker) == std::vector<std::uint32_t>{1, 2, 3}));
 
