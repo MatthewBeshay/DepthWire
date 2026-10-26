@@ -262,7 +262,7 @@ field() {
 
     for label in failover-default failover-moderate failover-tight; do
         echo "## ${label}"
-        printf 'run\tpromoted\tapplied-at-promotion\tdetection-ns\toutage-ns\tcatch-up-ns\tdigest-equal\n'
+        printf 'run\tpromoted\tapplied-at-promotion\tdetection-ns\toutage-ns\tcatch-up-ns\tprimary-heartbeat-max-gap-ns\tdigest-equal\n'
         : >"${SCRATCH}/detection" ; : >"${SCRATCH}/outage" ; : >"${SCRATCH}/catchup"
 
         for standby in "${OUTPUT_DIRECTORY}/${label}"/run*-standby.txt; do
@@ -299,8 +299,9 @@ field() {
             echo "${detection}" >>"${SCRATCH}/detection"
             echo "${outage}" >>"${SCRATCH}/outage"
             echo "${catch_up:-0}" >>"${SCRATCH}/catchup"
-            printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "${run}" "${promoted}" \
+            printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "${run}" "${promoted}" \
                 "$(field "${standby}" applied-at-promotion)" "${detection}" "${outage}" "${catch_up}" \
+                "$(field "${primary}" heartbeat-max-gap-ns)" \
                 "$([[ "${digest}" == "${EXPECTED_DIGEST}" ]] && echo yes || echo NO)"
         done
 
