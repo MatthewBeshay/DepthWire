@@ -254,6 +254,35 @@ add_test(
         -P "${PROJECT_SOURCE_DIR}/cmake/RunReplayValidateRejects.cmake"
 )
 
+# Failover and gap-fill over loopback sockets (docs/architecture/failover.md).
+# Each test owns a fixed port range so the two can run in parallel.
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    foreach(ha_test IN ITEMS failover gap_fill)
+        if(ha_test STREQUAL "failover")
+            set(ha_script RunHaFailover.cmake)
+            set(ha_port_base 47310)
+        else()
+            set(ha_script RunHaGapFill.cmake)
+            set(ha_port_base 47320)
+        endif()
+
+        add_test(
+            NAME depthwire_test_ha_${ha_test}
+            COMMAND "${CMAKE_COMMAND}"
+                "-DDEPTHWIRE_HA_EXECUTABLE=$<TARGET_FILE:depthwire-ha>"
+                "-DDEPTHWIRE_REPLAY_EXECUTABLE=$<TARGET_FILE:depthwire-replay>"
+                "-DDEPTHWIRE_TRACE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/fixtures/trace/load_uniform_100k_v1.dwtrace"
+                "-DDEPTHWIRE_WORK_DIR=${CMAKE_CURRENT_BINARY_DIR}"
+                "-DDEPTHWIRE_HA_PORT_BASE=${ha_port_base}"
+                -P "${PROJECT_SOURCE_DIR}/cmake/${ha_script}"
+        )
+        set_tests_properties(depthwire_test_ha_${ha_test} PROPERTIES
+            LABELS ha
+            TIMEOUT 90
+        )
+    endforeach()
+endif()
+
 if(DEPTHWIRE_ENABLE_DPDK)
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         depthwire_add_executable(
