@@ -53,6 +53,7 @@ Engine    -> Book + Market + Order + Risk + Strategy
 Pipeline  -> Engine + Market + Order + Wire
 Trace     -> Contracts + Digest + Wire
 Replay    -> Contracts + Digest + Engine + Pipeline + Trace + Wire
+Ha        -> Contracts + Wire
 ```
 
 Consumers include headers through `depthwire/...` and link namespaced targets
@@ -250,6 +251,16 @@ warm-up policy, timer overhead, every run, raw-output checksums; see the
 tagged release revision with `scripts/replay/run-evidence.sh` and
 `scripts/ring/run-evidence.sh`.
 
+The failover and gap-fill evidence lives under
+[results/failover/wsl2-fedora44](results/failover/wsl2-fedora44). The
+"hosts" are three network namespaces on one machine. Over 60 runs the
+promoted standby's final digest equalled the conformance digest every time,
+with a p50 outage of 3.3 ms at a 3 ms failure timeout. Gap-fill stays below
+1.4 ms up to 5% feed loss, but stalls for TCP's retransmission timeout when
+the recovery traffic is lost too. Unlike the release bundles, it was
+collected with `scripts/ha/run-evidence.sh` from branch revision `e15cd45`;
+the failover code is unchanged in v1.2.0.
+
 ## AF_PACKET path
 
 Create a private `veth` pair:
@@ -296,8 +307,8 @@ Remove the pair afterward:
 
 | Path | Purpose |
 |---|---|
-| `include/depthwire/` | Installed public packages (engine, wire, pipeline, digest, trace, replay) |
-| `apps/` | The replay command and the AF_PACKET application |
+| `include/depthwire/` | Installed public packages (engine, wire, pipeline, digest, trace, replay, ha) |
+| `apps/` | The replay command, the AF_PACKET application, and the failover and gap-fill application |
 | `benchmarks/` | Ring and AF_PACKET measurement programs |
 | `support/` | Non-installed DPDK test and benchmark infrastructure |
 | `tests/unit/` | Package-focused correctness tests |
@@ -305,6 +316,7 @@ Remove the pair afterward:
 | `tests/fixtures/trace/` | Checked-in replay traces with recorded construction rules |
 | `scripts/dpdk/` | Repeatable host and virtual-link setup |
 | `scripts/replay/` | Release evidence collection |
+| `scripts/ha/` | Network-namespace topology and failover evidence collection |
 | `docs/` | Architecture specs, methodology, and scope |
 | `results/` | Benchmark evidence produced from the release tag |
 
@@ -314,4 +326,6 @@ Remove the pair afterward:
 - [Packet pipeline](docs/architecture/packet-pipeline.md)
 - [Wire protocol](docs/architecture/wire-protocol.md)
 - [Trace format and digest contract](docs/architecture/trace-format.md)
+- [Two-host failover and multicast gap-fill](docs/architecture/failover.md)
 - [Benchmark methodology](docs/benchmarks/methodology.md)
+- [STRIDE threat model of the order-entry path](docs/security/stride-order-entry.md)
