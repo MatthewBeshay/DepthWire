@@ -215,6 +215,24 @@ add_test(
     COMMAND depthwire_test_conformance_fixture "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/trace"
 )
 
+depthwire_add_test(
+    depthwire_test_ha_codec
+    "${CMAKE_CURRENT_SOURCE_DIR}/unit/ha/codec.cpp"
+)
+target_link_libraries(depthwire_test_ha_codec PRIVATE DepthWire::Ha)
+
+depthwire_add_test(
+    depthwire_test_ha_gap_tracker
+    "${CMAKE_CURRENT_SOURCE_DIR}/unit/ha/gap_tracker.cpp"
+)
+target_link_libraries(depthwire_test_ha_gap_tracker PRIVATE DepthWire::Ha)
+
+depthwire_add_test(
+    depthwire_test_ha_failure_detector
+    "${CMAKE_CURRENT_SOURCE_DIR}/unit/ha/failure_detector.cpp"
+)
+target_link_libraries(depthwire_test_ha_failure_detector PRIVATE DepthWire::Ha)
+
 # The public CLI, run twice in fresh processes, must reproduce the
 # identical digest (docs/architecture/trace-format.md).
 add_test(
