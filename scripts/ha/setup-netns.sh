@@ -23,7 +23,7 @@ if interface_exists "${BRIDGE}"; then
 fi
 
 echo "DepthWire HA namespaces require elevated privileges for link and namespace changes."
-sudo -v
+sudo -n true 2>/dev/null || sudo -v
 sudo modprobe bridge 2>/dev/null || true
 sudo modprobe veth 2>/dev/null || true
 

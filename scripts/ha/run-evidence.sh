@@ -96,7 +96,7 @@ COMMANDS_LOG="${OUTPUT_DIRECTORY}/commands.log"
 FAILURES="${OUTPUT_DIRECTORY}/failures.txt"
 : >"${COMMANDS_LOG}"
 : >"${FAILURES}"
-sudo -v
+sudo -n true 2>/dev/null || sudo -v
 
 {
     echo "== date";       date -u +"%Y-%m-%dT%H:%M:%SZ"

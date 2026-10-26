@@ -5,7 +5,7 @@ set -Eeuo pipefail
 readonly BRIDGE="br-dw"
 readonly HOSTS=(feed primary standby)
 
-sudo -v
+sudo -n true 2>/dev/null || sudo -v
 
 for host in "${HOSTS[@]}"; do
     sudo ip netns delete "dw-${host}" 2>/dev/null || true
