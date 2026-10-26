@@ -37,19 +37,22 @@ jobs:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
     steps:
-      - name: Install build tools
-        run: >-
-          dnf install --assumeyes
-          clang
-          cmake
-          gcc-c++
-          git
-          ninja-build
+      - uses: MatthewBeshay/setup-fedora-toolchain@v1
+        with:
+          cache-key: core-${{ matrix.name }}
+          packages: >-
+            clang
+            cmake
+            gcc-c++
+            git
+            ninja-build
       - uses: actions/checkout@v4
       - name: Configure
         run: cmake --preset core-debug
       - name: Build
         run: cmake --build --preset core-debug --parallel 2
+      - name: Show ccache statistics
+        run: ccache --show-stats
       - name: Test
         run: ctest --preset core-debug
 
@@ -61,14 +64,14 @@ jobs:
       CC: clang
       CXX: clang++
     steps:
-      - name: Install Clang tools
-        run: >-
-          dnf install --assumeyes
-          clang
-          clang-tools-extra
-          cmake
-          git
-          ninja-build
+      - uses: MatthewBeshay/setup-fedora-toolchain@v1
+        with:
+          packages: >-
+            clang
+            clang-tools-extra
+            cmake
+            git
+            ninja-build
       - uses: actions/checkout@v4
       - name: Check formatting
         run: |
@@ -81,6 +84,8 @@ jobs:
           -DCMAKE_CXX_CLANG_TIDY='clang-tidy;--warnings-as-errors=*'
       - name: Build with clang-tidy
         run: cmake --build --preset core-debug --parallel 2
+      - name: Show ccache statistics
+        run: ccache --show-stats
 
   sanitisers:
     name: ASan and UBSan
@@ -92,21 +97,23 @@ jobs:
       ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
       UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
     steps:
-      - name: Install build tools
-        run: >-
-          dnf install --assumeyes
-          clang
-          cmake
-          compiler-rt
-          git
-          libasan
-          libubsan
-          ninja-build
+      - uses: MatthewBeshay/setup-fedora-toolchain@v1
+        with:
+          packages: >-
+            clang
+            cmake
+            compiler-rt
+            git
+            libasan
+            libubsan
+            ninja-build
       - uses: actions/checkout@v4
       - name: Configure
         run: cmake --preset core-sanitised
       - name: Build
         run: cmake --build --preset core-sanitised --parallel 2
+      - name: Show ccache statistics
+        run: ccache --show-stats
       - name: Test
         run: ctest --preset core-sanitised
 
@@ -118,19 +125,21 @@ jobs:
       CC: clang
       CXX: clang++
     steps:
-      - name: Install build tools
-        run: >-
-          dnf install --assumeyes
-          clang
-          cmake
-          compiler-rt
-          git
-          ninja-build
+      - uses: MatthewBeshay/setup-fedora-toolchain@v1
+        with:
+          packages: >-
+            clang
+            cmake
+            compiler-rt
+            git
+            ninja-build
       - uses: actions/checkout@v4
       - name: Configure
         run: cmake --preset core-fuzz
       - name: Build
         run: cmake --build --preset core-fuzz --parallel 2
+      - name: Show ccache statistics
+        run: ccache --show-stats
       - name: Run bounded fuzz smoke test
         run: ctest --preset core-fuzz -L fuzz
 
@@ -142,13 +151,13 @@ jobs:
       CC: gcc
       CXX: g++
     steps:
-      - name: Install build tools
-        run: >-
-          dnf install --assumeyes
-          cmake
-          gcc-c++
-          git
-          ninja-build
+      - uses: MatthewBeshay/setup-fedora-toolchain@v1
+        with:
+          packages: >-
+            cmake
+            gcc-c++
+            git
+            ninja-build
       - uses: actions/checkout@v4
       - name: Configure with contracts enabled
         run: >-
@@ -157,6 +166,8 @@ jobs:
           -DDEPTHWIRE_CONTRACT_SEMANTIC=enforce
       - name: Build
         run: cmake --build build/contracts --parallel 2
+      - name: Show ccache statistics
+        run: ccache --show-stats
       - name: Test with contracts enforced
         run: ctest --test-dir build/contracts --output-on-failure
 
@@ -165,19 +176,21 @@ jobs:
     runs-on: ubuntu-24.04
     container: fedora:44
     steps:
-      - name: Install build tools and DPDK
-        run: >-
-          dnf install --assumeyes
-          cmake
-          dpdk-devel
-          gcc-c++
-          git
-          ninja-build
-          pkgconf-pkg-config
+      - uses: MatthewBeshay/setup-fedora-toolchain@v1
+        with:
+          packages: >-
+            cmake
+            dpdk-devel
+            gcc-c++
+            git
+            ninja-build
+            pkgconf-pkg-config
       - uses: actions/checkout@v4
       - name: Configure
         run: cmake --preset dpdk-release
       - name: Build
         run: cmake --build --preset dpdk-release --parallel 2
+      - name: Show ccache statistics
+        run: ccache --show-stats
       - name: Test virtual DPDK paths
         run: ctest --preset dpdk-release
